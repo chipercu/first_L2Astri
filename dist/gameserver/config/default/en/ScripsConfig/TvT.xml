@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+	<!-- In the header indicate the opening event start time (days, minutes and hours), and the fourth variable - this time opening event duration in seconds -->
+	<!-- If day = "0" days are not taken into account, ie will be daily at a specified time -->
+	<tvt day="0" hour="21" min="40" TimeToEvent="120">  
+		<!-- The minimum and maximum number of players to start the event period -->
+		<Participants min="1" max="20"/>
+		<!-- The minimum and maximum level for participation in the Event -->
+		<Level min="1" max="85"/>
+		<!-- Time for registration (in seconds) -->
+		<TimeToRegistration val="60"/>
+		<!-- Allow Hero weapons and skills to events? -->
+		<AllowHeroSkillAndWeapons val="false"/>
+		<!-- Ban the use of items, list ID through "," default potions-->
+		<RestrictItems val="725,726,727,728"/>
+		<!-- Ban the use of skills, list ID through "," -->
+		<CanUseSkills id=""/>
+		<!-- Whether to include a reward for each kill? -->
+		<AllowKillBonus val="false"/>
+		<!-- Awards ID for each kill and count -->
+		<KillReward id="57" count="8000000"/>
+		<!-- Awards at the end of ID and its number of -->
+		<!-- number of values ​​of fields "id" and "count" solely responsible for the same! Writing a "," -->
+		<Reward id="57,4037" count="8000000,12"/>
+		<!-- Enable / Disable the right to participate item (default false (off)) -->
+		<!-- ID need to contribute an item and the number of -->
+		<AllowTakeItems val="false"/>
+		<TakeItems id="57" count="100000"/>	
+		<!-- Whether shooting effects (buffs) for teleportation to opening event. -->
+		<StopAllEffects val="true"/>
+		<ListMageMagSupport val="1517,1518,1519,1535,1536,1537,1538"/>
+		<ListMageFaiterSupport val="1499,1500,1501,1502,1503,1504,1517"/>
+		<!-- 
+			At the opening event can be an unlimited number of teams,
+			but at least two, or Event will not start!
+		-->
+		<TeamCoords name="Devil"/>
+		<TeamCoords name="Angel"/>
+		<!-- The time between the start of the fight and teleport / early rounds (in seconds) -->
+		<PauseTime val="10" />		
+		<!-- 
+			In total there are 2 types of TVT:
+			(1) The winning team is determined by number of dead characters rivals.
+				In this case, you must use the <ResurrectionTime val="10" /> (time on seconds)
+				
+			(2) The winning team is determined by number of rounds won (the next round begins after
+				both in terms of living will remain only one of the teams.)
+				In this case, you must use the <NumberOfRounds val="5" /> number of rounds.
+				!!!!!Also "Event time" in this case stands for each round!!!!!
+				
+				Do not use together!
+		-->
+		<NumberOfRounds val="5"/>
+	</tvt>
+	<!-- In the header indicate the opening event start time (days, minutes and hours), and the fourth variable - this time opening event duration in seconds -->
+	<!-- If day = "0" days are not taken into account, ie will be daily at a specified time -->
+	<tvt day="0" hour="12" min="35" TimeToEvent="120">  
+		<!-- The minimum and maximum number of players to start the event period -->
+		<Participants min="1" max="20"/>
+		<!-- The minimum and maximum level for participation in the Event -->
+		<Level min="1" max="85"/>
+		<!-- Time for registration (in seconds) -->
+		<TimeToRegistration val="60"/>
+		<!-- Allow Hero weapons and skills to events? -->
+		<AllowHeroSkillAndWeapons val="false"/>
+		<!-- Ban the use of items, list ID through "," default potions-->
+		<RestrictItems val="725,726,727,728"/>
+		<!-- Whether to include a reward for each kill? -->
+		<AllowKillBonus val="false"/>
+		<!-- Awards ID for each kill and count -->
+		<KillReward id="57" count="8000000"/>
+		<!-- Awards at the end of ID and its number of -->
+		<!-- number of values ​​of fields "id" and "count" solely responsible for the same! Writing a "," -->
+		<Reward id="57,4037" count="8000000,12"/>
+		<!-- Enable / Disable the right to participate item (default false (off)) -->
+		<!-- ID need to contribute an item and the number of -->
+		<AllowTakeItems val="false"/>
+		<TakeItems id="57" count="100000"/>	
+		<!-- Whether shooting effects (buffs) for teleportation to opening event. -->
+		<StopAllEffects val="true"/>
+		<ListMageMagSupport val="1517,1518,1519,1535,1536,1537,1538"/>
+		<ListMageFaiterSupport val="1499,1500,1501,1502,1503,1504,1517"/>
+		<!-- 
+			At the opening event can be an unlimited number of teams,
+			but at least two, or Event will not start!
+		-->
+		<TeamCoords name="Devil"/>
+		<TeamCoords name="Angel"/>
+		<!-- The time between the start of the fight and teleport / early rounds (in seconds) -->
+		<PauseTime val="10" />		
+		<!-- 
+			In total there are 2 types of TVT:
+			(1) The winning team is determined by number of dead characters rivals.
+				In this case, you must use the <ResurrectionTime val="10" /> (time on seconds)
+				
+			(2) The winning team is determined by number of rounds won (the next round begins after
+				both in terms of living will remain only one of the teams.)
+				In this case, you must use the <NumberOfRounds val="5" /> number of rounds.
+				!!!!!Also "Event time" in this case stands for each round!!!!!
+				
+				Do not use together!
+		-->
+		<NumberOfRounds val="5"/>
+	</tvt>
+	<!-- In the header indicate the opening event start time (days, minutes and hours), and the fourth variable - this time opening event duration in seconds -->
+	<!-- If day = "0" days are not taken into account, ie will be daily at a specified time -->
+	<tvt day="0" hour="12" min="40" TimeToEvent="120">  
+		<!-- The minimum and maximum number of players to start the event period -->
+		<Participants min="1" max="20"/>
+		<!-- The minimum and maximum level for participation in the Event -->
+		<Level min="1" max="85"/>
+		<!-- Time for registration (in seconds) -->
+		<TimeToRegistration val="60"/>
+		<!-- Allow Hero weapons and skills to events? -->
+		<AllowHeroSkillAndWeapons val="false"/>
+		<!-- Ban the use of items, list ID through "," default potions-->
+		<RestrictItems val="725,726,727,728"/>
+		<!-- Whether to include a reward for each kill? -->
+		<AllowKillBonus val="false"/>
+		<!-- Awards ID for each kill and count -->
+		<KillReward id="57" count="8000000"/>
+		<!-- Awards at the end of ID and its number of -->
+		<!-- number of values ​​of fields "id" and "count" solely responsible for the same! Writing a "," -->
+		<Reward id="57,4037" count="8000000,12"/>
+		<!-- Enable / Disable the right to participate item (default false (off)) -->
+		<!-- ID need to contribute an item and the number of -->
+		<AllowTakeItems val="false"/>
+		<TakeItems id="57" count="100000"/>	
+		<!-- Whether shooting effects (buffs) for teleportation to opening event. -->
+		<StopAllEffects val="true"/>
+		<ListMageMagSupport val="1517,1518,1519,1535,1536,1537,1538"/>
+		<ListMageFaiterSupport val="1499,1500,1501,1502,1503,1504,1517"/>
+		<!-- 
+			At the opening event can be an unlimited number of teams,
+			but at least two, or Event will not start!
+		-->
+		<TeamCoords name="Devil"/>
+		<TeamCoords name="Angel"/>
+		<!-- The time between the start of the fight and teleport / early rounds (in seconds) -->
+		<PauseTime val="10" />		
+		<!-- 
+			In total there are 2 types of TVT:
+			(1) The winning team is determined by number of dead characters rivals.
+				In this case, you must use the <ResurrectionTime val="10" /> (time on seconds)
+				
+			(2) The winning team is determined by number of rounds won (the next round begins after
+				both in terms of living will remain only one of the teams.)
+				In this case, you must use the <NumberOfRounds val="5" /> number of rounds.
+				!!!!!Also "Event time" in this case stands for each round!!!!!
+				
+				Do not use together!
+		-->
+		<NumberOfRounds val="5"/>
+	</tvt>
+</list>
