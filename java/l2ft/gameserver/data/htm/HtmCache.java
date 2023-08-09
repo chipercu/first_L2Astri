@@ -10,6 +10,7 @@ import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
 
+import net.sf.ehcache.config.CacheConfiguration;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -132,6 +133,13 @@ public class HtmCache
 		//String content = getContent(f, "UTF-8");
 
 		String path = f.getAbsolutePath().substring(rootPath.length()).replace("\\", "/");
+		for (int i = 0; i < _cache.length; i++) {
+			final CacheConfiguration cacheConfiguration = new CacheConfiguration();
+			cacheConfiguration.name(lang.getShortName());
+			final Cache cache = new Cache(cacheConfiguration);
+			cache.initialise();
+			_cache[i] = cache;
+		}
 
 		_cache[lang.ordinal()].put(new Element(path.toLowerCase(), Strings.bbParse(content)));
 	}
@@ -236,7 +244,11 @@ public class HtmCache
 
 	public void clear()
 	{
-		for(int i = 0; i < _cache.length; i++)
-			_cache[i].removeAll();
+		for(int i = 0; i < _cache.length; i++){
+			if (_cache[i] != null){
+				_cache[i].removeAll();
+			}
+		}
+
 	}
 }

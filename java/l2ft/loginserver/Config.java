@@ -20,199 +20,195 @@ import l2ft.commons.util.Rnd;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Config
-{
-	private final static Logger _log = LoggerFactory.getLogger(Config.class);
+public class Config {
+    private final static Logger _log = LoggerFactory.getLogger(Config.class);
 
-	public static final String LOGIN_CONFIGURATION_FILE = "config/loginserver.ini";
-	public static final String SERVER_NAMES_FILE = "config/xml/servername.xml";
+    public static final String DEVELOP_PATH = "dist/loginserver/config/default/ru";
+    public static final Boolean isDevelopMode = Boolean.parseBoolean(System.getenv("DEVELOP"));
 
-	public static String LOGIN_HOST;
-	public static int PORT_LOGIN;
+    public static final String LOGIN_CONFIGURATION_FILE = "config/loginserver.ini";
+    public static final String SERVER_NAMES_FILE = "config/xml/servername.xml";
 
-	public static String GAME_SERVER_LOGIN_HOST;
-	public static int GAME_SERVER_LOGIN_PORT;
-	public static long GAME_SERVER_PING_DELAY;
-	public static int GAME_SERVER_PING_RETRY;
+    public static String LOGIN_HOST;
+    public static int PORT_LOGIN;
 
-	public static String DATABASE_DRIVER;
-	public static int DATABASE_MAX_CONNECTIONS;
-	public static int DATABASE_MAX_IDLE_TIMEOUT;
-	public static int DATABASE_IDLE_TEST_PERIOD;
-	public static String DATABASE_URL;
-	public static String DATABASE_LOGIN;
-	public static String DATABASE_PASSWORD;
+    public static String GAME_SERVER_LOGIN_HOST;
+    public static int GAME_SERVER_LOGIN_PORT;
+    public static long GAME_SERVER_PING_DELAY;
+    public static int GAME_SERVER_PING_RETRY;
 
-	public static String DEFAULT_PASSWORD_HASH;
-	public static String LEGACY_PASSWORD_HASH;
+    public static String DATABASE_DRIVER;
+    public static int DATABASE_MAX_CONNECTIONS;
+    public static int DATABASE_MAX_IDLE_TIMEOUT;
+    public static int DATABASE_IDLE_TEST_PERIOD;
+    public static String DATABASE_URL;
+    public static String DATABASE_LOGIN;
+    public static String DATABASE_PASSWORD;
 
-	public static int LOGIN_BLOWFISH_KEYS;
-	public static int LOGIN_RSA_KEYPAIRS;
+    public static String DEFAULT_PASSWORD_HASH;
+    public static String LEGACY_PASSWORD_HASH;
 
-	public static boolean ACCEPT_NEW_GAMESERVER;
-	public static boolean AUTO_CREATE_ACCOUNTS;
+    public static int LOGIN_BLOWFISH_KEYS;
+    public static int LOGIN_RSA_KEYPAIRS;
 
-	public static String ANAME_TEMPLATE;
-	public static String APASSWD_TEMPLATE;
+    public static boolean ACCEPT_NEW_GAMESERVER;
+    public static boolean AUTO_CREATE_ACCOUNTS;
 
-	public static final Map<Integer, String> SERVER_NAMES = new HashMap<Integer, String>();
+    public static String ANAME_TEMPLATE;
+    public static String APASSWD_TEMPLATE;
 
-	public final static long LOGIN_TIMEOUT = 60 * 1000L;
+    public static final Map<Integer, String> SERVER_NAMES = new HashMap<Integer, String>();
 
-	public static int LOGIN_TRY_BEFORE_BAN;
-	public static long LOGIN_TRY_TIMEOUT;
-	public static long IP_BAN_TIME;
-	
-	public static boolean FAKE_LOGIN_SERVER;
+    public final static long LOGIN_TIMEOUT = 60 * 1000L;
 
-	private static ScrambledKeyPair[] _keyPairs;
-	private static byte[][] _blowfishKeys;
+    public static int LOGIN_TRY_BEFORE_BAN;
+    public static long LOGIN_TRY_TIMEOUT;
+    public static long IP_BAN_TIME;
 
-	public static PasswordHash DEFAULT_CRYPT;
-	public static PasswordHash[] LEGACY_CRYPT;
+    public static boolean FAKE_LOGIN_SERVER;
 
-	public static boolean LOGIN_LOG;
+    private static ScrambledKeyPair[] _keyPairs;
+    private static byte[][] _blowfishKeys;
 
-	// it has no instancies
-	private Config()
-	{
-	}
+    public static PasswordHash DEFAULT_CRYPT;
+    public static PasswordHash[] LEGACY_CRYPT;
 
-	public final static void load()
-	{
-		loadConfiguration();
-		loadServerNames();
-	}
+    public static boolean LOGIN_LOG;
 
-	public final static void initCrypt() throws Throwable
-	{
-		DEFAULT_CRYPT = new PasswordHash(Config.DEFAULT_PASSWORD_HASH);
-		List<PasswordHash> legacy = new ArrayList<PasswordHash>();
-		for(String method : Config.LEGACY_PASSWORD_HASH.split(";"))
-			if(!method.equalsIgnoreCase(Config.DEFAULT_PASSWORD_HASH))
-				legacy.add(new PasswordHash(method));
-		LEGACY_CRYPT = legacy.toArray(new PasswordHash[legacy.size()]);
+    // it has no instancies
+    private Config() {
+    }
 
-		_log.info("Loaded " + Config.DEFAULT_PASSWORD_HASH + " as default crypt.");
+    public final static void load() {
+        loadConfiguration();
+        loadServerNames();
+    }
 
-		_keyPairs = new ScrambledKeyPair[Config.LOGIN_RSA_KEYPAIRS];
+    public final static void initCrypt() throws Throwable {
+        DEFAULT_CRYPT = new PasswordHash(Config.DEFAULT_PASSWORD_HASH);
+        List<PasswordHash> legacy = new ArrayList<PasswordHash>();
+        for (String method : Config.LEGACY_PASSWORD_HASH.split(";"))
+            if (!method.equalsIgnoreCase(Config.DEFAULT_PASSWORD_HASH))
+                legacy.add(new PasswordHash(method));
+        LEGACY_CRYPT = legacy.toArray(new PasswordHash[legacy.size()]);
 
-		KeyPairGenerator keygen = KeyPairGenerator.getInstance("RSA");
-		RSAKeyGenParameterSpec spec = new RSAKeyGenParameterSpec(1024, RSAKeyGenParameterSpec.F4);
-		keygen.initialize(spec);
+        _log.info("Loaded " + Config.DEFAULT_PASSWORD_HASH + " as default crypt.");
 
-		for(int i = 0; i < _keyPairs.length; i++)
-			_keyPairs[i] = new ScrambledKeyPair(keygen.generateKeyPair());
+        _keyPairs = new ScrambledKeyPair[Config.LOGIN_RSA_KEYPAIRS];
 
-		_log.info("Cached " + _keyPairs.length + " KeyPairs for RSA communication");
+        KeyPairGenerator keygen = KeyPairGenerator.getInstance("RSA");
+        RSAKeyGenParameterSpec spec = new RSAKeyGenParameterSpec(1024, RSAKeyGenParameterSpec.F4);
+        keygen.initialize(spec);
 
-		_blowfishKeys = new byte[Config.LOGIN_BLOWFISH_KEYS][16];
+        for (int i = 0; i < _keyPairs.length; i++)
+            _keyPairs[i] = new ScrambledKeyPair(keygen.generateKeyPair());
 
-		for(int i = 0; i < _blowfishKeys.length; i++)
-			for(int j = 0; j < _blowfishKeys[i].length; j++)
-				_blowfishKeys[i][j] = (byte) (Rnd.get(255) + 1);
+        _log.info("Cached " + _keyPairs.length + " KeyPairs for RSA communication");
 
-		_log.info("Stored " + _blowfishKeys.length + " keys for Blowfish communication");
-	}
+        _blowfishKeys = new byte[Config.LOGIN_BLOWFISH_KEYS][16];
 
-	public final static void loadServerNames()
-	{
-		SERVER_NAMES.clear();
+        for (int i = 0; i < _blowfishKeys.length; i++)
+            for (int j = 0; j < _blowfishKeys[i].length; j++)
+                _blowfishKeys[i][j] = (byte) (Rnd.get(255) + 1);
 
-		try
-		{
-			SAXReader reader = new SAXReader(true);
-			Document document = reader.read(new File(SERVER_NAMES_FILE));
+        _log.info("Stored " + _blowfishKeys.length + " keys for Blowfish communication");
+    }
 
-			Element root = document.getRootElement();
+    public final static void loadServerNames() {
+        SERVER_NAMES.clear();
 
-			for(Iterator<Element> itr = root.elementIterator(); itr.hasNext(); )
-			{
-				Element node = itr.next();
-				if(node.getName().equalsIgnoreCase("server"))
-				{
-					Integer id = Integer.valueOf(node.attributeValue("id"));
-					String name = node.attributeValue("name");
-					SERVER_NAMES.put(id, name);
-				}
-			}
+        try {
+            SAXReader reader = new SAXReader(true);
+            String path = SERVER_NAMES_FILE;
+            if (isDevelopMode){
+                path = "dist/loginserver/config/default/ru" + SERVER_NAMES_FILE.replaceAll("config", "");
+            }
 
-			_log.info("Loaded " + SERVER_NAMES.size() + " server names");
-		}
-		catch(Exception e)
-		{
-			_log.error("", e);
-		}
-	}
+            Document document = reader.read(new File(path));
 
-	public final static void loadConfiguration()
-	{
-		ExProperties serverSettings = load(LOGIN_CONFIGURATION_FILE);
+            Element root = document.getRootElement();
 
-		LOGIN_HOST = serverSettings.getProperty("LoginserverHostname", "127.0.0.1");
-		PORT_LOGIN = serverSettings.getProperty("LoginserverPort", 2106);
+            for (Iterator<Element> itr = root.elementIterator(); itr.hasNext(); ) {
+                Element node = itr.next();
+                if (node.getName().equalsIgnoreCase("server")) {
+                    Integer id = Integer.valueOf(node.attributeValue("id"));
+                    String name = node.attributeValue("name");
+                    SERVER_NAMES.put(id, name);
+                }
+            }
 
-		GAME_SERVER_LOGIN_HOST = serverSettings.getProperty("LoginHost", "127.0.0.1");
-		GAME_SERVER_LOGIN_PORT = serverSettings.getProperty("LoginPort", 9014);
+            _log.info("Loaded " + SERVER_NAMES.size() + " server names");
+        } catch (Exception e) {
+            _log.error("", e);
+        }
+    }
 
-		DATABASE_DRIVER = serverSettings.getProperty("Driver", "com.mysql.jdbc.Driver");
-		DATABASE_MAX_CONNECTIONS = serverSettings.getProperty("MaximumDbConnections", 3);
-		DATABASE_MAX_IDLE_TIMEOUT = serverSettings.getProperty("MaxIdleConnectionTimeout", 600);
-		DATABASE_IDLE_TEST_PERIOD = serverSettings.getProperty("IdleConnectionTestPeriod", 60);
-		DATABASE_URL = serverSettings.getProperty("URL", "jdbc:mysql://localhost/l2jdb");
-		DATABASE_LOGIN = serverSettings.getProperty("Login", "root");
-		DATABASE_PASSWORD = serverSettings.getProperty("Password", "");
+    public final static void loadConfiguration() {
+        ExProperties serverSettings = load(LOGIN_CONFIGURATION_FILE);
 
-		LOGIN_BLOWFISH_KEYS = serverSettings.getProperty("BlowFishKeys", 20);
-		LOGIN_RSA_KEYPAIRS = serverSettings.getProperty("RSAKeyPairs", 10);
+        LOGIN_HOST = serverSettings.getProperty("LoginserverHostname", "127.0.0.1");
+        PORT_LOGIN = serverSettings.getProperty("LoginserverPort", 2106);
 
-		ACCEPT_NEW_GAMESERVER = serverSettings.getProperty("AcceptNewGameServer", true);
+        GAME_SERVER_LOGIN_HOST = serverSettings.getProperty("LoginHost", "127.0.0.1");
+        GAME_SERVER_LOGIN_PORT = serverSettings.getProperty("LoginPort", 9014);
 
-		DEFAULT_PASSWORD_HASH = serverSettings.getProperty("PasswordHash", "whirlpool2");
-		LEGACY_PASSWORD_HASH = serverSettings.getProperty("LegacyPasswordHash", "sha1");
+        DATABASE_DRIVER = serverSettings.getProperty("Driver", "com.mysql.jdbc.Driver");
+        DATABASE_MAX_CONNECTIONS = serverSettings.getProperty("MaximumDbConnections", 3);
+        DATABASE_MAX_IDLE_TIMEOUT = serverSettings.getProperty("MaxIdleConnectionTimeout", 600);
+        DATABASE_IDLE_TEST_PERIOD = serverSettings.getProperty("IdleConnectionTestPeriod", 60);
+        DATABASE_URL = serverSettings.getProperty("URL", "jdbc:mysql://localhost/l2jdb");
+        DATABASE_LOGIN = serverSettings.getProperty("Login", "root");
+        DATABASE_PASSWORD = serverSettings.getProperty("Password", "");
+        if (isDevelopMode){
+            DATABASE_PASSWORD = System.getenv("DB_PASSWORD");
+        }
+        LOGIN_BLOWFISH_KEYS = serverSettings.getProperty("BlowFishKeys", 20);
+        LOGIN_RSA_KEYPAIRS = serverSettings.getProperty("RSAKeyPairs", 10);
 
-		AUTO_CREATE_ACCOUNTS = serverSettings.getProperty("AutoCreateAccounts", true);
-		ANAME_TEMPLATE = serverSettings.getProperty("AccountTemplate", "[A-Za-z0-9]{4,14}");
-		APASSWD_TEMPLATE = serverSettings.getProperty("PasswordTemplate", "[A-Za-z0-9]{4,16}");
+        ACCEPT_NEW_GAMESERVER = serverSettings.getProperty("AcceptNewGameServer", true);
 
-		LOGIN_TRY_BEFORE_BAN = serverSettings.getProperty("LoginTryBeforeBan", 10);
-		LOGIN_TRY_TIMEOUT = serverSettings.getProperty("LoginTryTimeout", 5) * 1000L;
-		IP_BAN_TIME = serverSettings.getProperty("IpBanTime", 300) * 1000L;
-		GAME_SERVER_PING_DELAY = serverSettings.getProperty("GameServerPingDelay", 30) * 1000L;
-		GAME_SERVER_PING_RETRY = serverSettings.getProperty("GameServerPingRetry", 4);
-		FAKE_LOGIN_SERVER = serverSettings.getProperty("FakeLogin", false);
+        DEFAULT_PASSWORD_HASH = serverSettings.getProperty("PasswordHash", "whirlpool2");
+        LEGACY_PASSWORD_HASH = serverSettings.getProperty("LegacyPasswordHash", "sha1");
 
-		LOGIN_LOG = serverSettings.getProperty("LoginLog", true);
-	}
+        AUTO_CREATE_ACCOUNTS = serverSettings.getProperty("AutoCreateAccounts", true);
+        ANAME_TEMPLATE = serverSettings.getProperty("AccountTemplate", "[A-Za-z0-9]{4,14}");
+        APASSWD_TEMPLATE = serverSettings.getProperty("PasswordTemplate", "[A-Za-z0-9]{4,16}");
 
-	public static ExProperties load(String filename)
-	{
-		return load(new File(filename));
-	}
+        LOGIN_TRY_BEFORE_BAN = serverSettings.getProperty("LoginTryBeforeBan", 10);
+        LOGIN_TRY_TIMEOUT = serverSettings.getProperty("LoginTryTimeout", 5) * 1000L;
+        IP_BAN_TIME = serverSettings.getProperty("IpBanTime", 300) * 1000L;
+        GAME_SERVER_PING_DELAY = serverSettings.getProperty("GameServerPingDelay", 30) * 1000L;
+        GAME_SERVER_PING_RETRY = serverSettings.getProperty("GameServerPingRetry", 4);
+        FAKE_LOGIN_SERVER = serverSettings.getProperty("FakeLogin", false);
 
-	public static ExProperties load(File file)
-	{
-		ExProperties result = new ExProperties();
+        LOGIN_LOG = serverSettings.getProperty("LoginLog", true);
+    }
 
-		try
-		{
-			result.load(file);
-		}
-		catch(IOException e)
-		{
-			_log.error("", e);
-		}
+    public static ExProperties load(String filename) {
+        String filePath = filename;
+        if (isDevelopMode){
+            filePath = DEVELOP_PATH + filePath.replaceAll("config", "");
+        }
+        return load(new File(filePath));
+    }
 
-		return result;
-	}
+    public static ExProperties load(File file) {
+        ExProperties result = new ExProperties();
 
-	public static ScrambledKeyPair getScrambledRSAKeyPair()
-	{
-		return _keyPairs[Rnd.get(_keyPairs.length)];
-	}
+        try {
+            result.load(file);
+        } catch (IOException e) {
+            _log.error("", e);
+        }
 
-	public static byte[] getBlowfishKey()
-	{
-		return _blowfishKeys[Rnd.get(_blowfishKeys.length)];
-	}
+        return result;
+    }
+
+    public static ScrambledKeyPair getScrambledRSAKeyPair() {
+        return _keyPairs[Rnd.get(_keyPairs.length)];
+    }
+
+    public static byte[] getBlowfishKey() {
+        return _blowfishKeys[Rnd.get(_blowfishKeys.length)];
+    }
 }

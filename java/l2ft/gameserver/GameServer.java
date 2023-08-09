@@ -79,279 +79,262 @@ import l2ft.gameserver.utils.FirstTeam;
 import l2ft.gameserver.utils.Strings;
 import l2ft.gameserver.utils.HWID;
 
+import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class GameServer
-{
-	public static final int AUTH_SERVER_PROTOCOL = 2;
-	private static final Logger _log = LoggerFactory.getLogger(GameServer.class);
+public class GameServer {
+    public static final int AUTH_SERVER_PROTOCOL = 2;
+    private static final Logger _log = LoggerFactory.getLogger(GameServer.class);
 
-	public class GameServerListenerList extends ListenerList<GameServer>
-	{
-		public void onStart()
-		{
-			for(Listener<GameServer> listener : getListeners())
-				if(OnStartListener.class.isInstance(listener))
-					((OnStartListener) listener).onStart();
-		}
+    public class GameServerListenerList extends ListenerList<GameServer> {
+        public void onStart() {
+            for (Listener<GameServer> listener : getListeners())
+                if (OnStartListener.class.isInstance(listener))
+                    ((OnStartListener) listener).onStart();
+        }
 
-		public void onShutdown()
-		{
-			for(Listener<GameServer> listener : getListeners())
-				if(OnShutdownListener.class.isInstance(listener))
-					((OnShutdownListener) listener).onShutdown();
-		}
-	}
+        public void onShutdown() {
+            for (Listener<GameServer> listener : getListeners())
+                if (OnShutdownListener.class.isInstance(listener))
+                    ((OnShutdownListener) listener).onShutdown();
+        }
+    }
 
-	public static GameServer _instance;
+    public static GameServer _instance;
 
-	private final SelectorThread<GameClient> _selectorThreads[];
-	private Version version;
-	private TelnetServer statusServer;
-	private final GameServerListenerList _listeners;
+    private final SelectorThread<GameClient> _selectorThreads[];
+    private Version version;
+    private TelnetServer statusServer;
+    private final GameServerListenerList _listeners;
 
-	private int _serverStarted;
+    private int _serverStarted;
 
-	public SelectorThread<GameClient>[] getSelectorThreads()
-	{
-		return _selectorThreads;
-	}
+    public SelectorThread<GameClient>[] getSelectorThreads() {
+        return _selectorThreads;
+    }
 
-	public int time()
-	{
-		return (int) (System.currentTimeMillis() / 1000);
-	}
+    public int time() {
+        return (int) (System.currentTimeMillis() / 1000);
+    }
 
-	public int uptime()
-	{
-		return time() - _serverStarted;
-	}
+    public int uptime() {
+        return time() - _serverStarted;
+    }
 
-	@SuppressWarnings("unchecked")
-	public GameServer() throws Exception
-	{
-		_instance = this;
-		_serverStarted = time();
-		_listeners = new GameServerListenerList();
+    @SuppressWarnings("unchecked")
+    public GameServer() throws Exception {
+        _instance = this;
+        _serverStarted = time();
+        _listeners = new GameServerListenerList();
 
-		new File("./log/").mkdir();
-		
-		version = new Version(GameServer.class);
+        final boolean develop = Boolean.parseBoolean(System.getenv("DEVELOP"));
 
-		_log.info("=================================================");
-		_log.info("Revision: ................ " + version.getRevisionNumber());
-		_log.info("Build date: .............. " + version.getBuildDate());
-		_log.info("Compiler version: ........ " + version.getBuildJdk());
-		_log.info("=================================================");
+        if (develop) {
+            new File("log/").mkdir();
+        } else {
+            new File("./log/").mkdir();
+        }
 
-		// Initialize config
-		Config.load();
-		// Check binding address
-		checkFreePorts();
-		// Initialize database
-		Class.forName(Config.DATABASE_DRIVER).newInstance();
-		DatabaseFactory.getInstance().getConnection().close();
 
-		IdFactory _idFactory = IdFactory.getInstance();
-		if(!_idFactory.isInitialized())
-		{
-			_log.error("Could not read object IDs from DB. Please Check Your Data.");
-			throw new Exception("Could not initialize the ID factory");
-		}
+        version = new Version(GameServer.class);
 
-		CacheManager.getInstance();
+        _log.info("=================================================");
+        _log.info("Revision: ................ " + version.getRevisionNumber());
+        _log.info("Build date: .............. " + version.getBuildDate());
+        _log.info("Compiler version: ........ " + version.getBuildJdk());
+        _log.info("=================================================");
 
-		ThreadPoolManager.getInstance();
-		Scripts.getInstance();
-		GeoEngine.load();
-		Strings.reload();
-		GameTimeController.getInstance();
-		World.init();
-		Parsers.parseAll();
-		ItemsDAO.getInstance();
-		CrestCache.getInstance();
-		CharacterDAO.getInstance();
-		ClanTable.getInstance();
-		FishTable.getInstance();
-		SkillTreeTable.getInstance();
-		AugmentationData.getInstance();
-		EnchantHPBonusTable.getInstance();
-		LevelUpTable.getInstance();
-		PetSkillsTable.getInstance();
-		ItemAuctionManager.getInstance();
-		Scripts.getInstance().init();
-		SpawnManager.getInstance().spawnAll();
-		BoatHolder.getInstance().spawnAll();
-		StaticObjectHolder.getInstance().spawnAll();
-		RaidBossSpawnManager.getInstance();
-		DimensionalRiftManager.getInstance();
-		Announcements.getInstance();
-		LotteryManager.getInstance();
-		PlayerMessageStack.getInstance();
-		if(Config.AUTODESTROY_ITEM_AFTER > 0)
-			ItemsAutoDestroy.getInstance();
-		MonsterRace.getInstance();
-		SevenSigns.getInstance();
-		SevenSignsFestival.getInstance();
-		SevenSigns.getInstance().updateFestivalScore();
-		AutoSpawnManager.getInstance();
-		SevenSigns.getInstance().spawnSevenSignsNPC();
-		if(Config.ENABLE_OLYMPIAD)
-		{
-			Olympiad.load();
-			Hero.getInstance();
-		}
-		PetitionManager.getInstance();
-		CursedWeaponsManager.getInstance();
-		if(!Config.ALLOW_WEDDING)
-		{
-			CoupleManager.getInstance();
-			_log.info("CoupleManager initialized");
-		}
-		ItemHandler.getInstance();
-		AdminCommandHandler.getInstance().log();
-		UserCommandHandler.getInstance().log();
-		VoicedCommandHandler.getInstance().log();
-		TaskManager.getInstance();
+        // Initialize config
+        Config.load();
+        // Check binding address
+        checkFreePorts();
+        // Initialize database
+        Class.forName(Config.DATABASE_DRIVER).newInstance();
+        DatabaseFactory.getInstance().getConnection().close();
 
-		_log.info("=[Events]=========================================");
-		ResidenceHolder.getInstance().callInit();
-		EventHolder.getInstance().callInit();
-		_log.info("==================================================");
+        IdFactory _idFactory = IdFactory.getInstance();
+        if (!_idFactory.isInitialized()) {
+            _log.error("Could not read object IDs from DB. Please Check Your Data.");
+            throw new Exception("Could not initialize the ID factory");
+        }
 
-		CastleManorManager.getInstance();
-		Runtime.getRuntime().addShutdownHook(Shutdown.getInstance());
-		_log.info("IdFactory: Free ObjectID's remaining: " + IdFactory.getInstance().size());
+        CacheManager.getInstance();
 
-		CoupleManager.getInstance();
+        ThreadPoolManager.getInstance();
+        Scripts.getInstance();
+        GeoEngine.load();
+        Strings.reload();
+        GameTimeController.getInstance();
+        World.init();
+        Parsers.parseAll();
+        ItemsDAO.getInstance();
+        CrestCache.getInstance();
+        CharacterDAO.getInstance();
+        ClanTable.getInstance();
+        FishTable.getInstance();
+        SkillTreeTable.getInstance();
+        AugmentationData.getInstance();
+        EnchantHPBonusTable.getInstance();
+        LevelUpTable.getInstance();
+        PetSkillsTable.getInstance();
+        ItemAuctionManager.getInstance();
+        Scripts.getInstance().init();
+        SpawnManager.getInstance().spawnAll();
+        BoatHolder.getInstance().spawnAll();
+        StaticObjectHolder.getInstance().spawnAll();
+        RaidBossSpawnManager.getInstance();
+        DimensionalRiftManager.getInstance();
+        Announcements.getInstance();
+        LotteryManager.getInstance();
+        PlayerMessageStack.getInstance();
+        if (Config.AUTODESTROY_ITEM_AFTER > 0)
+            ItemsAutoDestroy.getInstance();
+        MonsterRace.getInstance();
+        SevenSigns.getInstance();
+        SevenSignsFestival.getInstance();
+        SevenSigns.getInstance().updateFestivalScore();
+        AutoSpawnManager.getInstance();
+        SevenSigns.getInstance().spawnSevenSignsNPC();
+        if (Config.ENABLE_OLYMPIAD) {
+            Olympiad.load();
+            Hero.getInstance();
+        }
+        PetitionManager.getInstance();
+        CursedWeaponsManager.getInstance();
+        if (!Config.ALLOW_WEDDING) {
+            CoupleManager.getInstance();
+            _log.info("CoupleManager initialized");
+        }
+        ItemHandler.getInstance();
+        AdminCommandHandler.getInstance().log();
+        UserCommandHandler.getInstance().log();
+        VoicedCommandHandler.getInstance().log();
+        TaskManager.getInstance();
 
-		if(Config.ALT_FISH_CHAMPIONSHIP_ENABLED)
-			FishingChampionShipManager.getInstance();
+        _log.info("=[Events]=========================================");
+        ResidenceHolder.getInstance().callInit();
+        EventHolder.getInstance().callInit();
+        _log.info("==================================================");
 
-		HellboundManager.getInstance();
+        CastleManorManager.getInstance();
+        Runtime.getRuntime().addShutdownHook(Shutdown.getInstance());
+        _log.info("IdFactory: Free ObjectID's remaining: " + IdFactory.getInstance().size());
 
-		NaiaTowerManager.getInstance();
-		NaiaCoreManager.getInstance();
+        CoupleManager.getInstance();
 
-		SoDManager.getInstance();
-		SoIManager.getInstance();
-		BloodAltarManager.getInstance();
+        if (Config.ALT_FISH_CHAMPIONSHIP_ENABLED)
+            FishingChampionShipManager.getInstance();
 
-		MiniGameScoreManager.getInstance();
+        HellboundManager.getInstance();
 
-		L2TopManager.getInstance();
+        NaiaTowerManager.getInstance();
+        NaiaCoreManager.getInstance();
 
-		MMOTopManager.getInstance();
+        SoDManager.getInstance();
+        SoIManager.getInstance();
+        BloodAltarManager.getInstance();
 
-		SMSWayToPay.getInstance();
-		
-		Shutdown.getInstance().schedule(Config.RESTART_AT_TIME, Shutdown.RESTART);
-		_log.info("GameServer Started");
-		_log.info("Maximum Numbers of Connected Players: " + Config.MAXIMUM_ONLINE_USERS);
+        MiniGameScoreManager.getInstance();
 
-		GamePacketHandler gph = new GamePacketHandler();
+        L2TopManager.getInstance();
 
-		InetAddress serverAddr = Config.GAMESERVER_HOSTNAME.equalsIgnoreCase("*") ? null : InetAddress.getByName(Config.GAMESERVER_HOSTNAME);
+        MMOTopManager.getInstance();
 
-		_selectorThreads = new SelectorThread[Config.PORTS_GAME.length];
-		for(int i = 0; i < Config.PORTS_GAME.length; i++)
-		{
-			_selectorThreads[i] = new SelectorThread<GameClient>(Config.SELECTOR_CONFIG, gph, gph, gph, null);
-			_selectorThreads[i].openServerSocket(serverAddr, Config.PORTS_GAME[i]);
-			_selectorThreads[i].start();
-		}
+        SMSWayToPay.getInstance();
 
-		AuthServerCommunication.getInstance().start();
+        Shutdown.getInstance().schedule(Config.RESTART_AT_TIME, Shutdown.RESTART);
+        _log.info("GameServer Started");
+        _log.info("Maximum Numbers of Connected Players: " + Config.MAXIMUM_ONLINE_USERS);
 
-		if(Config.SERVICES_OFFLINE_TRADE_RESTORE_AFTER_RESTART)
-			ThreadPoolManager.getInstance().schedule(new RestoreOfflineTraders(), 30000L);
-		
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(new AutoAnnounce(), 60000, 60000);
+        GamePacketHandler gph = new GamePacketHandler();
 
-		getListeners().onStart();
+        InetAddress serverAddr = Config.GAMESERVER_HOSTNAME.equalsIgnoreCase("*") ? null : InetAddress.getByName(Config.GAMESERVER_HOSTNAME);
 
-		if(Config.IS_TELNET_ENABLED)
-			statusServer = new TelnetServer();
-		else
-			_log.info("Telnet server is currently disabled.");
+        _selectorThreads = new SelectorThread[Config.PORTS_GAME.length];
+        for (int i = 0; i < Config.PORTS_GAME.length; i++) {
+            _selectorThreads[i] = new SelectorThread<GameClient>(Config.SELECTOR_CONFIG, gph, gph, gph, null);
+            _selectorThreads[i].openServerSocket(serverAddr, Config.PORTS_GAME[i]);
+            _selectorThreads[i].start();
+        }
 
-		_log.info("=================================================");
-		String memUsage = StatsUtils.getMemUsage().toString();
-		for(String line : memUsage.split("\n"))
-			_log.info(line);
-		_log.info("=================================================");
-		FirstTeam.info();
+        AuthServerCommunication.getInstance().start();
 
-		if(BrontConfig.BRONT_ENABLED)
-		{
-			_log.info("BrontGuard support enabled.");
-			HWID.reloadBannedHWIDs();
-		}
-		if(Config.ALLOW_PHANTOM_PLAYERS)
-			PhantomPlayers.init();
-	}
+        if (Config.SERVICES_OFFLINE_TRADE_RESTORE_AFTER_RESTART)
+            ThreadPoolManager.getInstance().schedule(new RestoreOfflineTraders(), 30000L);
 
-	public GameServerListenerList getListeners()
-	{
-		return _listeners;
-	}
+        ThreadPoolManager.getInstance().scheduleAtFixedRate(new AutoAnnounce(), 60000, 60000);
 
-	public static GameServer getInstance()
-	{
-		return _instance;
-	}
+        getListeners().onStart();
 
-	public <T extends GameListener> boolean addListener(T listener)
-	{
-		return _listeners.add(listener);
-	}
+        if (Config.IS_TELNET_ENABLED)
+            statusServer = new TelnetServer();
+        else
+            _log.info("Telnet server is currently disabled.");
 
-	public <T extends GameListener> boolean removeListener(T listener)
-	{
-		return _listeners.remove(listener);
-	}
+        _log.info("=================================================");
+        String memUsage = StatsUtils.getMemUsage().toString();
+        for (String line : memUsage.split("\n"))
+            _log.info(line);
+        _log.info("=================================================");
+        FirstTeam.info();
 
-	public static void checkFreePorts()
-	{
-		boolean binded = false;
-		while(!binded)
-			for(int PORT_GAME : Config.PORTS_GAME)
-				try
-				{
-					ServerSocket ss;
-					if(Config.GAMESERVER_HOSTNAME.equalsIgnoreCase("*"))
-						ss = new ServerSocket(PORT_GAME);
-					else
-						ss = new ServerSocket(PORT_GAME, 50, InetAddress.getByName(Config.GAMESERVER_HOSTNAME));
-					ss.close();
-					binded = true;
-				}
-				catch(Exception e)
-				{
-					_log.warn("Port " + PORT_GAME + " is allready binded. Please free it and restart server.");
-					binded = false;
-					try
-					{
-						Thread.sleep(1000);
-					}
-					catch(InterruptedException e2)
-					{}
-				}
-	}
+        if (BrontConfig.BRONT_ENABLED) {
+            _log.info("BrontGuard support enabled.");
+            HWID.reloadBannedHWIDs();
+        }
+        if (Config.ALLOW_PHANTOM_PLAYERS)
+            PhantomPlayers.init();
+    }
 
-	public static void main(String[] args) throws Exception
-	{
-		new GameServer();
-	}
+    public GameServerListenerList getListeners() {
+        return _listeners;
+    }
 
-	public Version getVersion()
-	{
-		return version;
-	}
+    public static GameServer getInstance() {
+        return _instance;
+    }
 
-	public TelnetServer getStatusServer()
-	{
-		return statusServer;
-	}
+    public <T extends GameListener> boolean addListener(T listener) {
+        return _listeners.add(listener);
+    }
+
+    public <T extends GameListener> boolean removeListener(T listener) {
+        return _listeners.remove(listener);
+    }
+
+    public static void checkFreePorts() {
+        boolean binded = false;
+        while (!binded)
+            for (int PORT_GAME : Config.PORTS_GAME)
+                try {
+                    ServerSocket ss;
+                    if (Config.GAMESERVER_HOSTNAME.equalsIgnoreCase("*"))
+                        ss = new ServerSocket(PORT_GAME);
+                    else
+                        ss = new ServerSocket(PORT_GAME, 50, InetAddress.getByName(Config.GAMESERVER_HOSTNAME));
+                    ss.close();
+                    binded = true;
+                } catch (Exception e) {
+                    _log.warn("Port " + PORT_GAME + " is allready binded. Please free it and restart server.");
+                    binded = false;
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e2) {
+                    }
+                }
+    }
+
+    public static void main(String[] args) throws Exception {
+		BasicConfigurator.configure();
+        new GameServer();
+    }
+
+    public Version getVersion() {
+        return version;
+    }
+
+    public TelnetServer getStatusServer() {
+        return statusServer;
+    }
 }
