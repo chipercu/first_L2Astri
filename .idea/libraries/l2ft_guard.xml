@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="l2ft-guard">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/l2ft-guard.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

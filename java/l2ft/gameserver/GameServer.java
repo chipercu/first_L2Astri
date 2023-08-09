@@ -79,6 +79,7 @@ import l2ft.gameserver.utils.FirstTeam;
 import l2ft.gameserver.utils.Strings;
 import l2ft.gameserver.utils.HWID;
 
+import net.sf.ehcache.config.CacheConfiguration;
 import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -327,6 +328,7 @@ public class GameServer {
 
     public static void main(String[] args) throws Exception {
 		BasicConfigurator.configure();
+//        CacheManager.create("dist/gameserver/config/default/ru/xml/ehcache.xml");
         new GameServer();
     }
 

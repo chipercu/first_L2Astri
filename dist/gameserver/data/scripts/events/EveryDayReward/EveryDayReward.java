@@ -1,5 +1,6 @@
 package events.EveryDayReward;
 
+import bosses.AntharasManager;
 import fuzzy.Html_Constructor.tags.Button;
 import fuzzy.Html_Constructor.tags.Img;
 import fuzzy.Html_Constructor.tags.Table;
@@ -7,6 +8,7 @@ import fuzzy.Html_Constructor.tags.parameters.Parameters;
 import l2ft.commons.configuration.ExProperties;
 import l2ft.gameserver.Announcements;
 import l2ft.gameserver.Config;
+import l2ft.gameserver.ThreadPoolManager;
 import l2ft.gameserver.data.xml.holder.ItemHolder;
 import l2ft.gameserver.instancemanager.ServerVariables;
 import l2ft.gameserver.listener.actor.player.OnPlayerEnterListener;
@@ -41,7 +43,7 @@ public class EveryDayReward extends Functions implements ScriptFile, OnPlayerEnt
     private static boolean checkHWID = false;
     private static boolean checkAccount = false;
 
-    private static final Map<Integer, Integer> itemFromDays = new HashMap<>();
+    private static final Map<String, String> itemFromDays = new HashMap<>();
     private static Map<Integer, Integer> rewardListItems = new HashMap<Integer, Integer>();
     private static int rewardInterval;
 
@@ -60,7 +62,18 @@ public class EveryDayReward extends Functions implements ScriptFile, OnPlayerEnt
             }
             return;
         }
-        showPage();
+        player.unsetVar("nextEveryDayReward");
+        player.setVar("nextEveryDayReward", 0, -1);
+        player.setVar(CURRENT_DAY_VAR, 1, -1);
+        showPage(player);
+//        ThreadPoolManager.getInstance().schedule(() -> {
+//            _log.warn("Проверка");
+//            showPage();
+//
+//        }, 5000);
+    }
+    public void getPage(){
+        showPage(getSelf());
     }
 
     @Override
@@ -75,8 +88,9 @@ public class EveryDayReward extends Functions implements ScriptFile, OnPlayerEnt
         }
         for (int i = 1; i < everyDayReward.size(); i++) {
             if (everyDayReward.getProperty("rewardDay" + i) != null){
-                final String[] split = everyDayReward.getProperty("rewardDay" + i, "57:1").split(":");
-                itemFromDays.put(Integer.parseInt(split[0]),Integer.parseInt(split[1]));
+                String key = "rewardDay" + i;
+                final String itemIdAndCount = everyDayReward.getProperty(key, "57:1");
+                itemFromDays.put(key ,itemIdAndCount);
             }
         }
         checkIP = everyDayReward.getProperty("checkIP", false);
@@ -99,7 +113,7 @@ public class EveryDayReward extends Functions implements ScriptFile, OnPlayerEnt
 
     public void getReward(String[] param){
         if (param == null || param.length < 1){
-            showPage();
+            showPage(getSelf());
             return;
         }
         //реализовать ограничение по аккаунту, по ИП;
@@ -157,23 +171,25 @@ public class EveryDayReward extends Functions implements ScriptFile, OnPlayerEnt
                 Functions.addItem(getSelf(), reward.getKey(), reward.getValue());
             }
         }
-        showPage();
+        showPage(getSelf());
     }
 
-    public void showPage(){
-        NpcHtmlMessage msg = new NpcHtmlMessage(getSelf(), getNpc());
+    public void showPage(Player player){
+        NpcHtmlMessage msg = new NpcHtmlMessage(player, null);
         String title = "<font color=\"AAAAAA\">Ежедневная награда</font>";
 
         Table table = new Table(itemFromDays.size() + 1, 1).setParams(border(1)).setParams(cellpadding(1));
         table.row(0).col(0).setParams(height(32), width(280)).insert(title);
 
-        final List<Integer> collect = new ArrayList<Integer>(itemFromDays.keySet());
+        final List<String> collect = new ArrayList<String>(itemFromDays.keySet());
         for (int i = 0; i < itemFromDays.size(); i++) {
-            ItemTemplate item = ItemHolder.getInstance().getTemplate(collect.get(i));
+            final String key = collect.get(i);
+            final String itemId = itemFromDays.get(key).split(":")[0];
+            ItemTemplate item = ItemHolder.getInstance().getTemplate(Integer.parseInt(itemId));
             if (item != null){
-                int day  = Integer.parseInt(getSelf().getVar(CURRENT_DAY_VAR));
+                int day  = Integer.parseInt(player.getVar(CURRENT_DAY_VAR));
                 if (day == i){
-                    if (Long.parseLong(getSelf().getVar("nextEveryDayReward")) < System.currentTimeMillis()){
+                    if (Long.parseLong(player.getVar("nextEveryDayReward")) > System.currentTimeMillis()){
                         table.row(i).col(0).setParams(height(32), width(280)).insert(getItemsTable(item, RewardStatus.COMPLETE, day));
                     }else {
                         table.row(i).col(0).setParams(height(32), width(280)).insert(getItemsTable(item, RewardStatus.ACTIVE, day));
@@ -186,11 +202,11 @@ public class EveryDayReward extends Functions implements ScriptFile, OnPlayerEnt
             }
         }
         msg.setHtml(table.build());
-        getSelf().sendPacket(msg);
+        player.sendPacket(msg);
     }
 
     private String getItemsTable(ItemTemplate item, RewardStatus rewardStatus, int day){
-        Button getButton = new Button("Получить", action("scripts_events.EveryDayReward.EveryDayReward:getReward " + day), 32, 96, "L2UI_ct1.button_df","L2UI_ct1.button_df");
+        Button getButton = new Button("Получить", action("scripts_events.EveryDayReward.EveryDayReward:getReward " + day), 98, 32, "L2UI_ct1.button_df","L2UI_ct1.button_df");
         Table table = new Table(1, 3).setParams(border(1));
         table.row(0).col(0).setParams(height(32), width(32)).insert(new Img(item.getIcon(), 32, 32).build());
         table.row(0).col(1).setParams(width(150)).insert(item.getName());

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="mesp-1.02">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/mesp-1.02.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

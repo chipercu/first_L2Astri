@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="org.napile.primitive">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/org.napile.primitive.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

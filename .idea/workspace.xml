@@ -4,11 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fca3cbc0-ec86-4562-82c7-c2574caeeab1" name="Default" comment="">
+    <list default="true" id="fca3cbc0-ec86-4562-82c7-c2574caeeab1" name="Default" comment="fix: убрана папка build из git">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/bront_guard_v1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_dbcp_1_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_io_2_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_lang3_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_math_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_pool_1_5_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/dom4j_2_0_0_alpha_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/ecj_4_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/ehcache_core_2_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/guava_11_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jacksum_1_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/javolution_5_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/l2ft_guard.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lameguard_1_9_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/log4j_1_2_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mesp_1_02.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_21.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/netty_3_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_napile_primitive.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/slf4j_api_1_6_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/slf4j_log4j12_1_6_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/tools.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/trove_3_0_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ehcache-core-2.5.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ehcache-failsafe.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/gameserver/config/default/ru/events/EveryDayReward.ini" beforeDir="false" afterPath="$PROJECT_DIR$/dist/gameserver/config/default/ru/events/EveryDayReward.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/gameserver/config/l2ft-version.ini" beforeDir="false" afterPath="$PROJECT_DIR$/dist/gameserver/config/l2ft-version.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FirstTeam.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FirstTeam.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/gameserver/data/html-ru/scripts/services/community/block/menu.htm" beforeDir="false" afterPath="$PROJECT_DIR$/dist/gameserver/data/html-ru/scripts/services/community/block/menu.htm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/gameserver/data/scripts/events/EveryDayReward/EveryDayReward.java" beforeDir="false" afterPath="$PROJECT_DIR$/dist/gameserver/data/scripts/events/EveryDayReward/EveryDayReward.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/l2ft/gameserver/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/l2ft/gameserver/GameServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/l2ft/gameserver/dao/ItemsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/l2ft/gameserver/dao/ItemsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/l2ft/gameserver/data/htm/HtmCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/l2ft/gameserver/data/htm/HtmCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ehcache-core-2.5.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ehcache-core-2.5.2.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,13 +67,13 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "aspect.path.notification.shown": "true",
-    "last_opened_file_path": "C:/Users/a.kiperku/IdeaProjects/first/dist/gameserver/data/scripts",
+    "last_opened_file_path": "C:/Users/FuzzY/IdeaProjects/first_L2Astri/lib/ehcache-core-2.5.2.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4091954",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
     "vue.rearranger.settings.migration": "true"
   }
@@ -85,7 +115,7 @@
       </envs>
       <option name="MAIN_CLASS_NAME" value="l2ft.gameserver.GameServer" />
       <module name="FirstTeam" />
-      <option name="PROGRAM_PARAMETERS" value="java -server -Dfile.encoding=UTF-8 -Xmx1G -cp dist/gameserver/config/default/ru/xml;lib/*;" />
+      <option name="PROGRAM_PARAMETERS" value="java -server -Dfile.encoding=UTF-8 -Xmx1G -cp config/default/ru/xml/; lib/*;" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="l2ft.gameserver.*" />

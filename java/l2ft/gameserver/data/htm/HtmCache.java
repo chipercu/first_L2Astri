@@ -42,9 +42,11 @@ public class HtmCache
 
 	private HtmCache()
 	{
-		for(int i = 0; i < _cache.length; i++)
+		for(int i = 0; i < _cache.length; i++){
+			final String s = getClass().getName() + "." + Language.VALUES[i].name();
 			_cache[i] = CacheManager.getInstance().getCache(getClass().getName() + "." + Language.VALUES[i].name());
-	}
+		}
+}
 
 	public void reload()
 	{
