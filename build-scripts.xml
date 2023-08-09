@@ -24,7 +24,7 @@
         <mkdir dir="${build.classes}"/>
     </target>
     <target name="compiles" depends="dir" description="Compile the source.">
-        <javac destdir="${build.classes}" optimize="on" debug="on" source="1.7" target="1.7" encoding="UTF-8" includeantruntime="false" nowarn="off">
+        <javac destdir="${build.classes}" optimize="on" debug="on" source="1.8" target="1.8" encoding="UTF-8" includeantruntime="false" nowarn="off">
             <compilerarg value="-Xlint:all,-serial"></compilerarg>
 			<src path="${src}"/>
             <classpath refid="classpath"/>
@@ -32,7 +32,7 @@
     </target>
 
     <target name="compile" depends="dir" description="Compile the source.">
-        <javac destdir="${build.classes}" optimize="on" debug="on" source="1.7" target="1.7" encoding="UTF-8" includeantruntime="false" nowarn="off">
+        <javac destdir="${build.classes}" optimize="on" debug="on" source="1.8" target="1.8" encoding="UTF-8" includeantruntime="false" nowarn="off">
             <compilerarg value="-Xlint:unchecked,-serial"></compilerarg>
             <src path="${scr}"/>
             <classpath refid="classpath"/>

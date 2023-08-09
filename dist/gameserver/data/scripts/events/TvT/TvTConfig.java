@@ -29,7 +29,11 @@ public class TvTConfig
 			factory.setValidating(false);
 			factory.setIgnoringComments(true);
 
-			File file = new File("./config/ScripsConfig/TvT.xml");
+			String configPath = "./config/ScripsConfig/TvT.xml";
+			if (Boolean.parseBoolean(System.getenv("DEVELOP"))){
+				configPath = "dist/gameserver/config/default/ru/ScripsConfig/TvT.xml";
+			}
+			File file = new File(configPath);
 
 			Calendar _date = Calendar.getInstance();
 

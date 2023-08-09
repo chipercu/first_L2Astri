@@ -29,7 +29,12 @@ public class CTFConfig
 			factory.setValidating(false);
 			factory.setIgnoringComments(true);
 
-			File file = new File("./config/ScripsConfig/CTF.xml");
+			String configPath = "./config/ScripsConfig/CTF.xml";
+			if (Boolean.parseBoolean(System.getenv("DEVELOP"))){
+				configPath = "dist/gameserver/config/default/ru/ScripsConfig/CTF.xml";
+			}
+
+			File file = new File(configPath);
 
 			Calendar _date = Calendar.getInstance();
 

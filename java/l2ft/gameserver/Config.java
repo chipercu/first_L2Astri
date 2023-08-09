@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
-import com.sun.deploy.Environment;
 import javolution.util.FastList;
 import javolution.text.TextBuilder;
 
@@ -3075,7 +3074,11 @@ public class Config {
         try {
             String line;
 
-            lnr = new LineNumberReader(new InputStreamReader(new FileInputStream(ANUSEWORDS_CONFIG_FILE), "UTF-8"));
+            String configPath = ANUSEWORDS_CONFIG_FILE;
+            if (Boolean.parseBoolean(System.getenv("DEVELOP"))){
+                configPath = "dist/gameserver/config/default/ru/txt/Abusewords.txt";
+            }
+            lnr = new LineNumberReader(new InputStreamReader(new FileInputStream(configPath), "UTF-8"));
 
             while ((line = lnr.readLine()) != null) {
                 StringTokenizer st = new StringTokenizer(line, "\n\r");
@@ -3230,6 +3233,7 @@ public class Config {
     }
 
     public static void loadVersionSettings() {
+
         ExProperties verSettings = load(VERSION);
 
         SERVER_VERSION = verSettings.getProperty("version", "Unknown Version");

@@ -58,6 +58,8 @@ public final class ItemFunctions
 			player = playable;
 
 		ItemTemplate t = ItemHolder.getInstance().getTemplate(itemId);
+
+
 		if(t.isStackable())
 			player.getInventory().addItem(itemId, count);
 		else

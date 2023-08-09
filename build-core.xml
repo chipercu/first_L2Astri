@@ -55,7 +55,7 @@
 		<delete dir="${build.classes}" />
 		<mkdir dir="${build.classes}" />
 
-		<javac srcdir="${src.commons}" destdir="${build.classes}" optimize="on" debug="${debug}" source="1.7" target="1.7" includeantruntime="false" encoding="UTF-8" nowarn="off" classpath="${build.classpath}">
+		<javac srcdir="${src.commons}" destdir="${build.classes}" optimize="on" debug="${debug}" source="1.8" target="1.8" includeantruntime="false" encoding="UTF-8" nowarn="off" classpath="${build.classpath}">
 			<compilerarg value="-Xlint:all,-serial,-rawtypes,-unchecked" />
 		</javac>
 	</target>
@@ -64,7 +64,7 @@
 		<delete dir="${build.classes}" />
 		<mkdir dir="${build.classes}" />
 
-		<javac srcdir="${src.geoserver}" destdir="${build.classes}" optimize="on" debug="${debug}" source="1.7" target="1.7" includeantruntime="false" encoding="UTF-8" nowarn="off" classpath="${build.classpath}">
+		<javac srcdir="${src.geoserver}" destdir="${build.classes}" optimize="on" debug="${debug}" source="1.8" target="1.8" includeantruntime="false" encoding="UTF-8" nowarn="off" classpath="${build.classpath}">
 			<compilerarg value="-Xlint:all,-serial,-rawtypes,-unchecked" />
 		</javac>
 	</target>
@@ -107,7 +107,7 @@
 		<delete dir="${build.classes}" />
 		<mkdir dir="${build.classes}" />
 
-		<javac srcdir="${src.gameserver}" destdir="${build.classes}" optimize="on" debug="${debug}" source="1.7" target="1.7" includeantruntime="false" encoding="UTF-8" nowarn="off" classpath="${build.classpath}:${build}/l2ft-commons.jar">
+		<javac srcdir="${src.gameserver}" destdir="${build.classes}" optimize="on" debug="${debug}" source="1.8" target="1.8" includeantruntime="false" encoding="UTF-8" nowarn="off" classpath="${build.classpath}:${build}/l2ft-commons.jar">
 			<!--<compilerarg value="-Xlint:deprecation" /> -->
 			<compilerarg value="-Xlint:all,-serial,-rawtypes,-unchecked,-deprecation,-static" />
 		</javac>
@@ -152,7 +152,7 @@
 		<delete dir="${build.classes}" />
 		<mkdir dir="${build.classes}" />
 
-		<javac srcdir="${src.authserver}" optimize="on" destdir="${build.classes}" debug="${debug}" source="1.7" target="1.7" includeantruntime="false" encoding="UTF-8" nowarn="off" classpath="${build.classpath}:${build}/l2ft-commons.jar">
+		<javac srcdir="${src.authserver}" optimize="on" destdir="${build.classes}" debug="${debug}" source="1.8" target="1.8" includeantruntime="false" encoding="UTF-8" nowarn="off" classpath="${build.classpath}:${build}/l2ft-commons.jar">
 			<compilerarg value="-Xlint:all,-serial" />
 		</javac>
 	</target>
