@@ -70,6 +70,6 @@ public class DeleteExpiredVarsTask extends AutomaticTask
 	@Override
 	public long reCalcTime(boolean start)
 	{
-		return System.currentTimeMillis() + 600000L;
+		return System.currentTimeMillis() + 300000L;
 	}
 }

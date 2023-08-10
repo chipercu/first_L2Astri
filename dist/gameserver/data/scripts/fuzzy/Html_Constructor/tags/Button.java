@@ -87,6 +87,9 @@ public class Button implements Build {
 
     @Override
     public String build() {
-        return "<button " + (value != null ? "value=\"" + value : "") + action + " width="+ width + " height=" + height + " back=\"" + back + "\" fore=\"" + fore +  "\">";
+
+//        action="bypass -h scripts_events.lastHero.LastHero:addPlayer";
+
+        return "<button " + (value != null ? "value=\"" + value : "")+ "\"" + action + " width="+ width + " height=" + height + " back=\"" + back + "\" fore=\"" + fore +  "\">";
     }
 }

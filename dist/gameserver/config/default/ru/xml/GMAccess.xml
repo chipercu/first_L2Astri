@@ -2,7 +2,7 @@
 <list>
 	<!-- Используется для настройки EVERYBODY_HAS_ADMIN_RIGHTS -->
 	<char>
-		<PlayerID set="0"/>
+		<PlayerID set="268481376"/>
 		<!-- По умолчанию FALSE для всех игроков -->
 		<IsGM set="true"/>
 		<!-- разрешает использование амин команд. -->
