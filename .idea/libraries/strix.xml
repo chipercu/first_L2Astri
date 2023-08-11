@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="lameguard-1.9.5">
+  <library name="strix">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/lameguard-1.9.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/strix.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

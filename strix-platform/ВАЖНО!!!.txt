@@ -1,0 +1,24 @@
+Для интеграции Strix-Platform'а:
+1) Добавить библиотеки "Strix-Platform-X.X.jar, commons-dbcp-X-X.jar, org.apache.commons.pool.jar" из папки "lib" к библиотекам эмулятора.
+2) Скопировать папку Strix-Platform со всеми файлами\подкатегориями в корневую папку эмулятора.
+3) Интегрировать секции кода из примеров "Examples include Platform" с учетом архитектуры эмулятора. Необходимые строки
+	помечены в // TODO[K] коммент.
+4) Скомпилировать ядро эмулятора
+5) Сконфигурировать Strix-Platform с использованием полученых ключей(основной + дополнительный).
+-----
+Для активации возможности верификации клиентов на AuthServer'е:
+1) Используя пример из "IncludeClassExample" клиентского пакета, интегрировать строки обрамленные коментариями
+в соответствии с архитектурой своего эмулятора.
+2) После получения StrixPlatformKey и StrixPlatformSecondKey от разработчиков, ввести его в код адаптированного пакета.
+-----
+Запрещается(1): передача элементов кода серверной части Strix-Platform, информации о работе Strix-Platform, реверсинг клиент части Strix-Platform, логов и ключей Strix-Platform!
+Нарушение любых пунктов "Условия использования" влечет за собой блокировку ключей защиты, с прекращением обслуживания.
+На этапах альфа\бета\пре-релиз тестов, Вы обязаны к передаче информации ТОЛЬКО команде Strix-Platform: kick, KilRoy, lordofdest
+-----
+*(1) - не расп. на участников команды Strix-Platform: kick, KilRoy, lordofdest
+
+Пример запуска эмулятора:
+java -Duser.timezone=Europe/Moscow -server -Dfile.encoding=UTF-8 -DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector -Xms1024m -Xmx1024m -cp config;./lib/* org.strixplatform.StrixPlatform org.mmocore.gameserver.GameServer
+
+1) строка прогрузки org.strixplatform.StrixPlatform  (основной main класс Strix-Platform'a)
+2) строка прогрузки org.mmocore.gameserver.GameServer (основной main класс эмулятора на основе OverWorld(с) исходника)

@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="l2ft-guard">
+  <library name="strixplatform-1.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/l2ft-guard.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/strixplatform-1.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -2,6 +2,7 @@ package l2ft.commons.versioning;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.jar.Attributes;
 import java.util.jar.JarFile;
 

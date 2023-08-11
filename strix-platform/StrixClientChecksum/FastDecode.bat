@@ -1,0 +1,1 @@
+start SPFilesChecksum.exe -fastdecode KEYES

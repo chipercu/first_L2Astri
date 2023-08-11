@@ -1,6 +1,5 @@
 
 init:
-    [mkdir] Created dir: C:\Users\a.kiperku\IdeaProjects\first\build
 
 compile-commons:
     [mkdir] Created dir: C:\Users\a.kiperku\IdeaProjects\first\build\classes
@@ -67,18 +66,13 @@ authserver-jar:
       [jar] Building jar: C:\Users\a.kiperku\IdeaProjects\first\build\l2ft-loginserver.jar
 
 authserver:
-    [mkdir] Created dir: C:\Users\a.kiperku\IdeaProjects\first\build\dist
-    [mkdir] Created dir: C:\Users\a.kiperku\IdeaProjects\first\build\dist\loginserver
-    [mkdir] Created dir: C:\Users\a.kiperku\IdeaProjects\first\build\dist\serverslibs
-    [mkdir] Created dir: C:\Users\a.kiperku\IdeaProjects\first\build\dist\loginserver\log
      [copy] Copying 2 files to C:\Users\a.kiperku\IdeaProjects\first\build\dist\serverslibs
-     [copy] Copying 23 files to C:\Users\a.kiperku\IdeaProjects\first\build\dist\serverslibs
-     [copy] Copying 18 files to C:\Users\a.kiperku\IdeaProjects\first\build\dist\loginserver
+     [copy] Copying 4 files to C:\Users\a.kiperku\IdeaProjects\first\build\dist\serverslibs
 
 compile-gameserver:
    [delete] Deleting directory C:\Users\a.kiperku\IdeaProjects\first\build\classes
     [mkdir] Created dir: C:\Users\a.kiperku\IdeaProjects\first\build\classes
-    [javac] Compiling 1729 source files to C:\Users\a.kiperku\IdeaProjects\first\build\classes
+    [javac] Compiling 1731 source files to C:\Users\a.kiperku\IdeaProjects\first\build\classes
     [javac] warning: [path] bad path element "C:\Users\a.kiperku\IdeaProjects\first\lib\ecj-4.2.jar": no such file or directory
     [javac] warning: [options] bootstrap class path not set in conjunction with -source 8
     [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\model\Skill.java:2371: warning: [static] static variable should be qualified by type name, SkillTrait, instead of by an expression
@@ -142,12 +136,12 @@ compile-gameserver:
     [javac]   missing type arguments for generic class Class<T>
     [javac]   where T is a type-variable:
     [javac]     T extends Object declared in class Class
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\GameServer.java:153: warning: [deprecation] newInstance() in Class has been deprecated
+    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\GameServer.java:155: warning: [deprecation] newInstance() in Class has been deprecated
     [javac]         Class.forName(Config.DATABASE_DRIVER).newInstance();
     [javac]                                              ^
     [javac]   where T is a type-variable:
     [javac]     T extends Object declared in class Class
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\GameServer.java:254: warning: [rawtypes] found raw type: SelectorThread
+    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\GameServer.java:256: warning: [rawtypes] found raw type: SelectorThread
     [javac]         _selectorThreads = new SelectorThread[Config.PORTS_GAME.length];
     [javac]                                ^
     [javac]   missing type arguments for generic class SelectorThread<T>
@@ -647,15 +641,11 @@ gameserver-jar:
       [jar] Building jar: C:\Users\a.kiperku\IdeaProjects\first\build\l2ft-gameserver.jar
 
 gameserver:
-    [mkdir] Created dir: C:\Users\a.kiperku\IdeaProjects\first\build\dist\tools
-    [mkdir] Created dir: C:\Users\a.kiperku\IdeaProjects\first\build\dist\gameserver\geodata
-    [mkdir] Created dir: C:\Users\a.kiperku\IdeaProjects\first\build\dist\gameserver\log
      [copy] Copying 1 file to C:\Users\a.kiperku\IdeaProjects\first\build\dist\serverslibs
    [delete] Deleting directory C:\Users\a.kiperku\IdeaProjects\first\build\classes
-     [copy] Copying 33600 files to C:\Users\a.kiperku\IdeaProjects\first\build\dist\gameserver
-     [copy] Copying 105 files to C:\Users\a.kiperku\IdeaProjects\first\build\dist\tools
+     [copy] Copying 10 files to C:\Users\a.kiperku\IdeaProjects\first\build\dist\gameserver
 
 dist:
 
 BUILD SUCCESSFUL
-Total time: 3 minutes 29 seconds
+Total time: 3 minutes 6 seconds

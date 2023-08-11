@@ -12,7 +12,6 @@
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="bront-guard-v1" level="project" />
     <orderEntry type="library" name="commons-dbcp-1.4" level="project" />
     <orderEntry type="library" name="commons-io-2.0.1" level="project" />
     <orderEntry type="library" name="commons-lang3-3.0" level="project" />
@@ -23,8 +22,6 @@
     <orderEntry type="library" name="guava-11.0.2" level="project" />
     <orderEntry type="library" name="jacksum-1.7.0" level="project" />
     <orderEntry type="library" name="javolution-5.5.1" level="project" />
-    <orderEntry type="library" name="l2ft-guard" level="project" />
-    <orderEntry type="library" name="lameguard-1.9.5" level="project" />
     <orderEntry type="library" name="log4j-1.2.16" level="project" />
     <orderEntry type="library" name="mesp-1.02" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1.21" level="project" />
@@ -35,5 +32,7 @@
     <orderEntry type="library" name="tools" level="project" />
     <orderEntry type="library" name="trove-3.0.3" level="project" />
     <orderEntry type="library" name="ehcache-core-2.5.2" level="project" />
+    <orderEntry type="library" name="strixplatform-1.0" level="project" />
+    <orderEntry type="library" name="strix" level="project" />
   </component>
 </module>

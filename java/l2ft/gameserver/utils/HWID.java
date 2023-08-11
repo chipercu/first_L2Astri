@@ -17,7 +17,7 @@ import l2ft.gameserver.database.mysql;
 import l2ft.gameserver.model.GameObjectsStorage;
 import l2ft.gameserver.model.Player;
 
-import net.jbront.BrontConfig;
+//import net.jbront.BrontConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,6 +30,8 @@ public class HWID
 
 	public static final HWIDComparator DefaultComparator = new HWIDComparator();
 	public static final HWIDComparator BAN_Comparator = new HWIDComparator();
+
+	public static final boolean BRONT_ENABLED = false;
 
 	public static final String SELECT_HWID = "SELECT HWID FROM `hwid_bans`";
 	public static final String REPLACE_HWID = "REPLACE INTO `hwid_bans` (hwid,comments) VALUES (?,?)";
@@ -78,7 +80,7 @@ public class HWID
 
 	public static String handleBanHWID(final String[] argv)
 	{
-		if(!BrontConfig.BRONT_ENABLED)
+		if(!BRONT_ENABLED)
 			return "HWID bans feature disabled";
 
 		if(argv == null || argv.length < 2)
@@ -130,14 +132,14 @@ public class HWID
 
 	public static boolean BanHWID(final String hwid, final String comment, final boolean kick)
 	{
-		if(!BrontConfig.BRONT_ENABLED || hwid == null || hwid.isEmpty())
+		if(!BRONT_ENABLED || hwid == null || hwid.isEmpty())
 			return false;
 		return BanHWID(new HardwareID(hwid), comment, kick);
 	}
 
 	public static boolean BanHWID(final HardwareID hwid, final String comment, final boolean kick)
 	{
-		if(!BrontConfig.BRONT_ENABLED || hwid == null)
+		if(!BRONT_ENABLED || hwid == null)
 			return false;
 
 		if(checkHWIDBanned(hwid))
@@ -180,14 +182,14 @@ public class HWID
 
 	public static boolean UnbanHWID(final String hwid)
 	{
-		if(!BrontConfig.BRONT_ENABLED || hwid == null || hwid.isEmpty())
+		if(!BRONT_ENABLED || hwid == null || hwid.isEmpty())
 			return false;
 		return UnbanHWID(new HardwareID(hwid));
 	}
 
 	public static boolean UnbanHWID(final HardwareID hwid)
 	{
-		if(!BrontConfig.BRONT_ENABLED || hwid == null)
+		if(!BRONT_ENABLED || hwid == null)
 			return false;
 
 		if(!checkHWIDBanned(hwid))

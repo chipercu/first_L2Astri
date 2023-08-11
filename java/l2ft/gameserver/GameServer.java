@@ -4,7 +4,7 @@ import java.io.File;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 
-import net.jbront.BrontConfig;
+//import net.jbront.BrontConfig;
 import net.sf.ehcache.CacheManager;
 
 import l2ft.commons.lang.StatsUtils;
@@ -86,6 +86,7 @@ import org.slf4j.LoggerFactory;
 
 public class GameServer {
     public static final int AUTH_SERVER_PROTOCOL = 2;
+    public static final boolean BRONT_ENABLED = false;
     private static final Logger _log = LoggerFactory.getLogger(GameServer.class);
 
     public class GameServerListenerList extends ListenerList<GameServer> {
@@ -280,7 +281,7 @@ public class GameServer {
         _log.info("=================================================");
         FirstTeam.info();
 
-        if (BrontConfig.BRONT_ENABLED) {
+        if (BRONT_ENABLED) {
             _log.info("BrontGuard support enabled.");
             HWID.reloadBannedHWIDs();
         }

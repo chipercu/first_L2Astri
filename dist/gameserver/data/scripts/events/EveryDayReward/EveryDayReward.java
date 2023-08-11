@@ -1,19 +1,14 @@
 package events.EveryDayReward;
 
-import fuzzy.Database_Util.DB_Util.DB_Player;
-import fuzzy.Database_Util.model.PlayerVariables;
 import fuzzy.Html_Constructor.tags.Button;
 import fuzzy.Html_Constructor.tags.Img;
 import fuzzy.Html_Constructor.tags.Table;
 import fuzzy.Html_Constructor.tags.parameters.Parameters;
 import l2ft.commons.configuration.ExProperties;
-import l2ft.commons.dbutils.DbUtils;
 import l2ft.commons.time.cron.SchedulingPattern;
 import l2ft.gameserver.Config;
 import l2ft.gameserver.data.xml.holder.ItemHolder;
-import l2ft.gameserver.database.DatabaseFactory;
 import l2ft.gameserver.listener.actor.player.OnPlayerEnterListener;
-import l2ft.gameserver.model.GameObjectsStorage;
 import l2ft.gameserver.model.Player;
 import l2ft.gameserver.model.actor.listener.CharListenerList;
 import l2ft.gameserver.network.l2.components.ChatType;
@@ -23,14 +18,9 @@ import l2ft.gameserver.network.l2.s2c.Say2;
 import l2ft.gameserver.scripts.Functions;
 import l2ft.gameserver.scripts.ScriptFile;
 import l2ft.gameserver.templates.item.ItemTemplate;
-import l2ft.gameserver.utils.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static fuzzy.Database_Util.DB_Util.DB_Player.*;
@@ -128,46 +118,36 @@ public class EveryDayReward extends Functions implements ScriptFile, OnPlayerEnt
             return;
         }
         if (checkAccount){
-            final List<Integer> players = loadPlayerIdByAccountName(player);
+            final List<Integer> players = loadPlayersIdByAccountName(player.getAccountName());
             for (Integer playerId: players){
-                for (PlayerVariables variables: loadVariables(playerId)){
-                    if (variables.getName().equals(REWARD_RECEIVED)){
-                        player.sendMessage("С данного аккаунта ежедневная награда уже получена");
-                        sendInfoMessage(player, "С данного аккаунта ежедневная награда уже получена");
+                if (getVar(playerId, REWARD_RECEIVED).isPresent()){
+                    player.sendMessage("С данного аккаунта ежедневная награда уже получена");
+                    sendInfoMessage(player, "С данного аккаунта ежедневная награда уже получена");
+                    return;
+                }
+//                for (PlayerVariables variables: loadVariables(playerId)){
+//                    if (variables.getName().equals(REWARD_RECEIVED)){
+//                        player.sendMessage("С данного аккаунта ежедневная награда уже получена");
+//                        sendInfoMessage(player, "С данного аккаунта ежедневная награда уже получена");
+//                        return;
+//                    }
+//                }
+            }
+        }
+        //реализовать ограничение по аккаунту, по ИП;
+        if (checkIP) {
+            final List<String> accountsByIp = getAccountsByIp(player.getIP());
+            for (String account: accountsByIp){
+                final List<Integer> playesId = loadPlayersIdByAccountName(account);
+                for (Integer playerId: playesId){
+                    if (getVar(playerId, REWARD_RECEIVED).isPresent()){
+                        player.sendMessage("С данного IP адреса ежедневная награда уже получена");
+                        sendInfoMessage(player,"С данного IP адреса ежедневная награда уже получена");
                         return;
                     }
                 }
             }
         }
-
-        //реализовать ограничение по аккаунту, по ИП;
-        if (checkIP) {
-            for (Player p : GameObjectsStorage.getAllPlayers()) {
-                if (p.getIP().equals(player.getIP()) && p.getObjectId() != player.getObjectId()){
-                    p.sendMessage("С данного IP адреса ежедневная награда уже получена");
-                    sendInfoMessage(player,"С данного IP адреса ежедневная награда уже получена");
-                    return;
-                }
-            }
-        }
-//        if (checkHWID) {
-//            for (Player p : GameObjectsStorage.getAllPlayers()) {
-//                if (p.getHWID().equals(player.getHWID()) && p.getObjectId() != player.getObjectId()){
-//                    player.sendMessage("С данного компьютера ежедневная награда уже получена");
-//                    sendInfoMessage(player, "С данного компьютера ежедневная награда уже получена");
-//                    return;
-//                }
-//            }
-//        }
-//        if (checkAccount) {
-//            for (Player p : GameObjectsStorage.getAllPlayers()) {
-//                if (p.getAccountName().equals(player.getAccountName()) && p.getObjectId() != player.getObjectId()){
-//                    player.sendMessage("С данного аккаунта ежедневная награда уже получена");
-//                    sendInfoMessage(player, "С данного аккаунта ежедневная награда уже получена");
-//                    return;
-//                }
-//            }
-//        }
 
         final int playerLastRewardDay = Integer.parseInt(player.getVar(CURRENT_DAY_VAR));
 
@@ -201,7 +181,7 @@ public class EveryDayReward extends Functions implements ScriptFile, OnPlayerEnt
         String title = "<font color=\"AAAAAA\">Ежедневная награда</font>";
 
         Table table = new Table(itemFromDays.size() + 1, 1).setParams(border(0), cellpadding(4), cellspacing(4));
-        table.row(0).col(0).setParams(height(40), width(280)).insert(title);
+        table.row(0).col(0).setParams(height(40), width(280)).insert("");
 
         for (int i = 0; i < itemFromDays.size(); i++) {
             final String[] split = itemFromDays.get(i).split(":");
@@ -231,22 +211,22 @@ public class EveryDayReward extends Functions implements ScriptFile, OnPlayerEnt
     }
 
     private String getItemsTable(ItemTemplate item, int count, RewardStatus rewardStatus, int day){
-        Button getButton = new Button("Получить", action("bypass -h scripts_events.EveryDayReward.EveryDayReward:getReward " + day + 1), 98, 32, "L2UI_ct1.button_df","L2UI_ct1.button_df");
+        Button getButton = new Button("Получить", action("bypass -h scripts_events.EveryDayReward.EveryDayReward:getReward " + day + 1), 70, 32, "L2UI_ct1.button_df","L2UI_ct1.button_df");
         Table table = new Table(1, 3).setParams(border(0), background("l2ui_ct1.Windows_DF_TooltipBG"));
         table.row(0).col(0).setParams(height(38), width(32)).insert(new Img(item.getIcon(), 32, 32).build());
-        table.row(0).col(1).setParams(width(150)).insert(item.getName() + " - " + count + "шт.");
+        table.row(0).col(1).setParams(width(150)).insert("  " + item.getName() + " - " + count + " шт.");
         switch (rewardStatus){
             case COMPLETE:{
-                table.row(0).col(2).setParams(width(98)).insert("<font color=D70000>Получено</font>");
+                table.row(0).col(2).setParams(width(80)).insert("<font color=00D700>Получено</font>");
                 break;
             }
             case ACTIVE:{
                 final String button = getButton.build();
-                table.row(0).col(2).setParams(width(98)).insert(button);
+                table.row(0).col(2).setParams(width(80)).insert(button);
                 break;
             }
             case NEXTED:{
-                table.row(0).col(2).setParams(width(98)).insert("<font color=D70000>Следующее</font>");
+                table.row(0).col(2).setParams(width(80)).insert("<font color=D70000>Следующее</font>");
                 break;
             }
         }
