@@ -272,6 +272,7 @@ public class EnterWorld extends L2GameClientPacket {
         // на всякий случай
         activeChar.sendActionFailed();
 
+
         if (first && activeChar.isGM() && Config.SAVE_GM_EFFECTS && activeChar.getPlayerAccess().CanUseGMCommand) {
             //silence
             if (activeChar.getVarB("gm_silence")) {

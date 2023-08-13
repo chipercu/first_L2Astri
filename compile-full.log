@@ -2,650 +2,644 @@
 init:
 
 compile-commons:
-    [mkdir] Created dir: C:\Users\a.kiperku\IdeaProjects\first\build\classes
-    [javac] Compiling 86 source files to C:\Users\a.kiperku\IdeaProjects\first\build\classes
-    [javac] warning: [path] bad path element "C:\Users\a.kiperku\IdeaProjects\first\lib\ecj-4.2.jar": no such file or directory
-    [javac] warning: [options] bootstrap class path not set in conjunction with -source 8
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\commons\collections\JoinedIterator.java:61: warning: [rawtypes] found raw type: Iterator
+   [delete] Deleting directory C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
+    [mkdir] Created dir: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
+    [javac] Compiling 86 source files to C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
+    [javac] warning: [path] bad path element "C:\Users\FuzzY\IdeaProjects\first_L2Astri\lib\ecj-4.2.jar": no such file or directory
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\commons\collections\JoinedIterator.java:61: warning: [rawtypes] found raw type: Iterator
     [javac] 	public JoinedIterator(Iterator... iterators)
     [javac] 	                      ^
     [javac]   missing type arguments for generic class Iterator<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Object declared in interface Iterator
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\commons\geometry\Point2D.java:3: warning: [overrides] Class Point2D overrides equals, but neither it nor any superclass overrides hashCode method
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\commons\geometry\Point2D.java:3: warning: [overrides] Class Point2D overrides equals, but neither it nor any superclass overrides hashCode method
     [javac] public class Point2D implements Cloneable
     [javac]        ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\commons\geometry\Point3D.java:3: warning: [overrides] Class Point3D overrides equals, but neither it nor any superclass overrides hashCode method
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\commons\geometry\Point3D.java:3: warning: [overrides] Class Point3D overrides equals, but neither it nor any superclass overrides hashCode method
     [javac] public class Point3D extends Point2D
     [javac]        ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\commons\lang\reference\AbstractHardReference.java:10: warning: [overrides] Class AbstractHardReference overrides equals, but neither it nor any superclass overrides hashCode method
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\commons\lang\reference\AbstractHardReference.java:10: warning: [overrides] Class AbstractHardReference overrides equals, but neither it nor any superclass overrides hashCode method
     [javac] public class AbstractHardReference<T> implements HardReference<T>
     [javac]        ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\commons\net\utils\Net.java:10: warning: [overrides] Class Net overrides equals, but neither it nor any superclass overrides hashCode method
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\commons\net\utils\Net.java:10: warning: [overrides] Class Net overrides equals, but neither it nor any superclass overrides hashCode method
     [javac] public class Net
     [javac]        ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\commons\time\cron\SchedulingPattern.java:270: warning: [removal] Integer(int) in Integer has been deprecated and marked for removal
-    [javac] 				values.add(new Integer(i));
-    [javac] 				           ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\commons\time\cron\SchedulingPattern.java:289: warning: [removal] Integer(int) in Integer has been deprecated and marked for removal
-    [javac] 			values.add(new Integer(v1));
-    [javac] 			           ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\commons\time\cron\SchedulingPattern.java:303: warning: [removal] Integer(int) in Integer has been deprecated and marked for removal
-    [javac] 					values.add(new Integer(i));
-    [javac] 					           ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\commons\time\cron\SchedulingPattern.java:309: warning: [removal] Integer(int) in Integer has been deprecated and marked for removal
-    [javac] 					values.add(new Integer(i));
-    [javac] 					           ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\commons\time\cron\SchedulingPattern.java:312: warning: [removal] Integer(int) in Integer has been deprecated and marked for removal
-    [javac] 					values.add(new Integer(i));
-    [javac] 					           ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\commons\time\cron\SchedulingPattern.java:316: warning: [removal] Integer(int) in Integer has been deprecated and marked for removal
-    [javac] 				values.add(new Integer(v1));
-    [javac] 				           ^
-    [javac] 13 warnings
+    [javac] 6 warnings
 
 commons-jar:
-     [exec] Execute failed: java.io.IOException: Cannot run program "svnversion" (in directory "C:\Users\a.kiperku\IdeaProjects\first"): CreateProcess error=2, Не удается найти указанный файл
-      [jar] Building jar: C:\Users\a.kiperku\IdeaProjects\first\build\l2ft-commons.jar
+     [exec] Execute failed: java.io.IOException: Cannot run program "svnversion" (in directory "C:\Users\FuzzY\IdeaProjects\first_L2Astri"): CreateProcess error=2, Не удается найти указанный файл
+      [jar] Building jar: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\l2ft-commons.jar
 
 compile-authserver:
-   [delete] Deleting directory C:\Users\a.kiperku\IdeaProjects\first\build\classes
-    [mkdir] Created dir: C:\Users\a.kiperku\IdeaProjects\first\build\classes
-    [javac] Compiling 59 source files to C:\Users\a.kiperku\IdeaProjects\first\build\classes
-    [javac] warning: [path] bad path element "C:\Users\a.kiperku\IdeaProjects\first\lib\ecj-4.2.jar": no such file or directory
-    [javac] warning: [options] bootstrap class path not set in conjunction with -source 8
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\loginserver\AuthServer.java:85: warning: [deprecation] newInstance() in Class has been deprecated
-    [javac]         Class.forName(Config.DATABASE_DRIVER).newInstance();
-    [javac]                                              ^
-    [javac]   where T is a type-variable:
-    [javac]     T extends Object declared in class Class
-    [javac] 3 warnings
+   [delete] Deleting directory C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
+    [mkdir] Created dir: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
+    [javac] Compiling 59 source files to C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
+    [javac] warning: [path] bad path element "C:\Users\FuzzY\IdeaProjects\first_L2Astri\lib\ecj-4.2.jar": no such file or directory
+    [javac] 1 warning
 
 authserver-jar:
-     [exec] Execute failed: java.io.IOException: Cannot run program "svnversion" (in directory "C:\Users\a.kiperku\IdeaProjects\first"): CreateProcess error=2, Не удается найти указанный файл
-      [jar] Building jar: C:\Users\a.kiperku\IdeaProjects\first\build\l2ft-loginserver.jar
+     [exec] Execute failed: java.io.IOException: Cannot run program "svnversion" (in directory "C:\Users\FuzzY\IdeaProjects\first_L2Astri"): CreateProcess error=2, Не удается найти указанный файл
+      [jar] Building jar: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\l2ft-loginserver.jar
 
 authserver:
-     [copy] Copying 2 files to C:\Users\a.kiperku\IdeaProjects\first\build\dist\serverslibs
-     [copy] Copying 4 files to C:\Users\a.kiperku\IdeaProjects\first\build\dist\serverslibs
+     [copy] Copying 2 files to C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\dist\serverslibs
 
 compile-gameserver:
-   [delete] Deleting directory C:\Users\a.kiperku\IdeaProjects\first\build\classes
-    [mkdir] Created dir: C:\Users\a.kiperku\IdeaProjects\first\build\classes
-    [javac] Compiling 1731 source files to C:\Users\a.kiperku\IdeaProjects\first\build\classes
-    [javac] warning: [path] bad path element "C:\Users\a.kiperku\IdeaProjects\first\lib\ecj-4.2.jar": no such file or directory
-    [javac] warning: [options] bootstrap class path not set in conjunction with -source 8
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\model\Skill.java:2371: warning: [static] static variable should be qualified by type name, SkillTrait, instead of by an expression
+   [delete] Deleting directory C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
+    [mkdir] Created dir: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
+    [javac] Compiling 1733 source files to C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
+    [javac] warning: [path] bad path element "C:\Users\FuzzY\IdeaProjects\first_L2Astri\lib\ecj-4.2.jar": no such file or directory
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\model\Skill.java:2371: warning: [static] static variable should be qualified by type name, SkillTrait, instead of by an expression
     [javac] 		return getTraitType() == _traitType.DERANGEMENT;
     [javac] 		                                   ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\templates\item\ItemTemplate.java:801: warning: [deprecation] @Deprecated annotation has no effect on this variable declaration
-    [javac] 	public boolean canBeEnchanted(@Deprecated boolean gradeCheck)
-    [javac] 	                                                  ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\model\entity\events\objects\SiegeClanObject.java:98: warning: [rawtypes] found raw type: SiegeEvent
-    [javac] 	public void setEvent(boolean start, SiegeEvent event)
-    [javac] 	                                    ^
-    [javac]   missing type arguments for generic class SiegeEvent<R,S>
-    [javac]   where R,S are type-variables:
-    [javac]     R extends Residence declared in class SiegeEvent
-    [javac]     S extends SiegeClanObject declared in class SiegeEvent
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\model\instances\DoorInstance.java:149: warning: [rawtypes] found raw type: SiegeEvent
-    [javac] 		SiegeEvent siegeEvent = getEvent(SiegeEvent.class);
-    [javac] 		^
-    [javac]   missing type arguments for generic class SiegeEvent<R,S>
-    [javac]   where R,S are type-variables:
-    [javac]     R extends Residence declared in class SiegeEvent
-    [javac]     S extends SiegeClanObject declared in class SiegeEvent
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\templates\npc\Faction.java:7: warning: [overrides] Class Faction overrides equals, but neither it nor any superclass overrides hashCode method
-    [javac] public class Faction
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\model\items\ManufactureItem.java:3: warning: [overrides] Class ManufactureItem overrides equals, but neither it nor any superclass overrides hashCode method
+    [javac] public class ManufactureItem
     [javac]        ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\templates\npc\MinionData.java:3: warning: [overrides] Class MinionData overrides equals, but neither it nor any superclass overrides hashCode method
-    [javac] public class MinionData
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\model\items\ItemInfo.java:7: warning: [overrides] Class ItemInfo overrides equals, but neither it nor any superclass overrides hashCode method
+    [javac] public class ItemInfo
     [javac]        ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\model\quest\QuestTimer.java:10: warning: [overrides] Class QuestTimer overrides equals, but neither it nor any superclass overrides hashCode method
-    [javac] public class QuestTimer extends RunnableImpl
-    [javac]        ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\model\reward\RewardData.java:14: warning: [overrides] Class RewardData overrides equals, but neither it nor any superclass overrides hashCode method
-    [javac] public class RewardData implements Cloneable
-    [javac]        ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\model\entity\residence\Castle.java:744: warning: [unchecked] unchecked conversion
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\model\entity\residence\Castle.java:744: warning: [unchecked] unchecked conversion
     [javac] 		List<Fortress> list = _relatedFortresses.get(Fortress.DOMAIN);
     [javac] 		                                            ^
     [javac]   required: List<Fortress>
     [javac]   found:    List
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\model\items\ItemInfo.java:7: warning: [overrides] Class ItemInfo overrides equals, but neither it nor any superclass overrides hashCode method
-    [javac] public class ItemInfo
-    [javac]        ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\model\items\ManufactureItem.java:3: warning: [overrides] Class ManufactureItem overrides equals, but neither it nor any superclass overrides hashCode method
-    [javac] public class ManufactureItem
-    [javac]        ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\model\instances\TamedBeastInstance.java:41: warning: [rawtypes] found raw type: Entry
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\model\instances\TamedBeastInstance.java:41: warning: [rawtypes] found raw type: Entry
     [javac] 	private static final Map.Entry<NpcString, int[]>[] TAMED_DATA = new Map.Entry[6];
     [javac] 	                                                                       ^
     [javac]   missing type arguments for generic class Entry<K,V>
     [javac]   where K,V are type-variables:
     [javac]     K extends Object declared in interface Entry
     [javac]     V extends Object declared in interface Entry
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\model\petition\PetitionSubGroup.java:18: warning: [deprecation] newInstance() in Class has been deprecated
-    [javac] 			_handler = (IPetitionHandler)clazz.newInstance();
-    [javac] 			                                  ^
-    [javac]   where T is a type-variable:
-    [javac]     T extends Object declared in class Class
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\stats\funcs\FuncTemplate.java:35: warning: [rawtypes] found raw type: Class
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\stats\funcs\FuncTemplate.java:35: warning: [rawtypes] found raw type: Class
     [javac] 			_constructor = _func.getConstructor(new Class[] { Stats.class, // stats to update
     [javac] 			                                        ^
     [javac]   missing type arguments for generic class Class<T>
     [javac]   where T is a type-variable:
     [javac]     T extends Object declared in class Class
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\GameServer.java:155: warning: [deprecation] newInstance() in Class has been deprecated
-    [javac]         Class.forName(Config.DATABASE_DRIVER).newInstance();
-    [javac]                                              ^
-    [javac]   where T is a type-variable:
-    [javac]     T extends Object declared in class Class
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\GameServer.java:256: warning: [rawtypes] found raw type: SelectorThread
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\model\quest\QuestTimer.java:10: warning: [overrides] Class QuestTimer overrides equals, but neither it nor any superclass overrides hashCode method
+    [javac] public class QuestTimer extends RunnableImpl
+    [javac]        ^
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\templates\npc\Faction.java:7: warning: [overrides] Class Faction overrides equals, but neither it nor any superclass overrides hashCode method
+    [javac] public class Faction
+    [javac]        ^
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\model\entity\events\objects\SiegeClanObject.java:98: warning: [rawtypes] found raw type: SiegeEvent
+    [javac] 	public void setEvent(boolean start, SiegeEvent event)
+    [javac] 	                                    ^
+    [javac]   missing type arguments for generic class SiegeEvent<R,S>
+    [javac]   where R,S are type-variables:
+    [javac]     R extends Residence declared in class SiegeEvent
+    [javac]     S extends SiegeClanObject declared in class SiegeEvent
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\model\instances\DoorInstance.java:149: warning: [rawtypes] found raw type: SiegeEvent
+    [javac] 		SiegeEvent siegeEvent = getEvent(SiegeEvent.class);
+    [javac] 		^
+    [javac]   missing type arguments for generic class SiegeEvent<R,S>
+    [javac]   where R,S are type-variables:
+    [javac]     R extends Residence declared in class SiegeEvent
+    [javac]     S extends SiegeClanObject declared in class SiegeEvent
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\templates\npc\MinionData.java:3: warning: [overrides] Class MinionData overrides equals, but neither it nor any superclass overrides hashCode method
+    [javac] public class MinionData
+    [javac]        ^
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\model\reward\RewardData.java:14: warning: [overrides] Class RewardData overrides equals, but neither it nor any superclass overrides hashCode method
+    [javac] public class RewardData implements Cloneable
+    [javac]        ^
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\GameServer.java:256: warning: [rawtypes] found raw type: SelectorThread
     [javac]         _selectorThreads = new SelectorThread[Config.PORTS_GAME.length];
     [javac]                                ^
     [javac]   missing type arguments for generic class SelectorThread<T>
     [javac]   where T is a type-variable:
     [javac]     T extends MMOClient declared in class SelectorThread
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\network\l2\s2c\SystemMessage.java:3190: warning: [removal] Integer(int) in Integer has been deprecated and marked for removal
-    [javac] 		args.add(new Arg(TYPE_DOOR_NAME, new Integer(id)));
-    [javac] 		                                 ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\network\l2\s2c\SystemMessage.java:3196: warning: [removal] Integer(int) in Integer has been deprecated and marked for removal
-    [javac] 		args.add(new Arg(TYPE_NPC_NAME, new Integer(1000000 + id)));
-    [javac] 		                                ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\model\mail\Mail.java:12: warning: [overrides] Class Mail overrides equals, but neither it nor any superclass overrides hashCode method
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\model\mail\Mail.java:12: warning: [overrides] Class Mail overrides equals, but neither it nor any superclass overrides hashCode method
     [javac] public class Mail implements JdbcEntity, Comparable<Mail>
     [javac]        ^
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\data\xml\holder\ResidenceHolder.java:27: warning: [rawtypes] found raw type: Class
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\data\xml\holder\ResidenceHolder.java:27: warning: [rawtypes] found raw type: Class
     [javac] 	private Map<Class, List<Residence>> _fastResidencesByType = new HashMap<Class, List<Residence>>(4);
     [javac] 	            ^
     [javac]   missing type arguments for generic class Class<T>
     [javac]   where T is a type-variable:
     [javac]     T extends Object declared in class Class
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\data\xml\holder\ResidenceHolder.java:27: warning: [rawtypes] found raw type: Class
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\data\xml\holder\ResidenceHolder.java:27: warning: [rawtypes] found raw type: Class
     [javac] 	private Map<Class, List<Residence>> _fastResidencesByType = new HashMap<Class, List<Residence>>(4);
     [javac] 	                                                                        ^
     [javac]   missing type arguments for generic class Class<T>
     [javac]   where T is a type-variable:
     [javac]     T extends Object declared in class Class
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\data\xml\holder\ResidenceHolder.java:126: warning: [rawtypes] found raw type: Class
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\data\xml\holder\ResidenceHolder.java:126: warning: [rawtypes] found raw type: Class
     [javac] 		for(Map.Entry<Class, List<Residence>> entry : _fastResidencesByType.entrySet())
     [javac] 		              ^
     [javac]   missing type arguments for generic class Class<T>
     [javac]   where T is a type-variable:
     [javac]     T extends Object declared in class Class
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\data\xml\parser\CharTemplateParser.java:41: warning: [rawtypes] found raw type: Iterator
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\data\xml\parser\CharTemplateParser.java:41: warning: [rawtypes] found raw type: Iterator
     [javac] 		for(Iterator interator = rootElement.elementIterator(); interator.hasNext();)
     [javac] 		    ^
     [javac]   missing type arguments for generic class Iterator<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Object declared in interface Iterator
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\data\xml\parser\CharTemplateParser.java:52: warning: [rawtypes] found raw type: Iterator
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\data\xml\parser\CharTemplateParser.java:52: warning: [rawtypes] found raw type: Iterator
     [javac] 			for(Iterator template = element.elementIterator(); template.hasNext();)
     [javac] 			    ^
     [javac]   missing type arguments for generic class Iterator<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Object declared in interface Iterator
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\IAdminCommandHandler.java:14: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\IAdminCommandHandler.java:14: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar);
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\IAdminCommandHandler.java:20: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\IAdminCommandHandler.java:20: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum();
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminAdmin.java:56: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminAdmin.java:56: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminAdmin.java:449: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminAdmin.java:449: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminAnnouncements.java:43: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminAnnouncements.java:43: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminAnnouncements.java:166: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminAnnouncements.java:166: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminAttribute.java:34: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminAttribute.java:34: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminAttribute.java:314: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminAttribute.java:314: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminBan.java:50: warning: [rawtypes] found raw type: Enum
-    [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
-    [javac] 	                               ^
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminBan.java:51: warning: [rawtypes] found raw type: Enum
+    [javac]     public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar) {
+    [javac]                                    ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminBan.java:300: warning: [rawtypes] found raw type: Collection
-    [javac] 		Collection list;
-    [javac] 		^
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminBan.java:318: warning: [rawtypes] found raw type: Collection
+    [javac]         Collection list;
+    [javac]         ^
     [javac]   missing type arguments for generic class Collection<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Object declared in interface Collection
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminBan.java:394: warning: [rawtypes] found raw type: Enum
-    [javac] 	public Enum[] getAdminCommandEnum()
-    [javac] 	       ^
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminBan.java:403: warning: [rawtypes] found raw type: Enum
+    [javac]     public Enum[] getAdminCommandEnum() {
+    [javac]            ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminCamera.java:18: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminCamera.java:18: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminCamera.java:72: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminCamera.java:72: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminCancel.java:18: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminCancel.java:18: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminCancel.java:36: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminCancel.java:36: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminChangeAccessLevel.java:45: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminChangeAccessLevel.java:45: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminChangeAccessLevel.java:308: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminChangeAccessLevel.java:308: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminClanHall.java:25: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminClanHall.java:25: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminClanHall.java:151: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminClanHall.java:151: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminClientSupport.java:31: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminClientSupport.java:31: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player player)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminClientSupport.java:128: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminClientSupport.java:128: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminCreateItem.java:34: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminCreateItem.java:34: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminCreateItem.java:225: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminCreateItem.java:225: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminCursedWeapons.java:24: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminCursedWeapons.java:24: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminCursedWeapons.java:131: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminCursedWeapons.java:131: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminDelete.java:23: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminDelete.java:23: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminDelete.java:55: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminDelete.java:55: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminDisconnect.java:21: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminDisconnect.java:21: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminDisconnect.java:91: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminDisconnect.java:91: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminDoorControl.java:19: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminDoorControl.java:19: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminDoorControl.java:58: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminDoorControl.java:58: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminEditChar.java:70: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminEditChar.java:70: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminEditChar.java:556: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminEditChar.java:556: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminEffects.java:47: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminEffects.java:47: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminEffects.java:339: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminEffects.java:339: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminEnchant.java:38: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminEnchant.java:38: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminEnchant.java:231: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminEnchant.java:231: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminEvents.java:15: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminEvents.java:15: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminEvents.java:36: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminEvents.java:36: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminGeodata.java:25: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminGeodata.java:25: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminGeodata.java:118: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminGeodata.java:118: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminGlobalEvent.java:16: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminGlobalEvent.java:16: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminGlobalEvent.java:36: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminGlobalEvent.java:36: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminGm.java:17: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminGm.java:17: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminGm.java:39: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminGm.java:39: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminGmChat.java:20: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminGmChat.java:20: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminGmChat.java:80: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminGmChat.java:80: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminHeal.java:18: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminHeal.java:18: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminHeal.java:39: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminHeal.java:39: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminHellbound.java:19: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminHellbound.java:19: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminHellbound.java:48: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminHellbound.java:48: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminHelpPage.java:15: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminHelpPage.java:15: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminHelpPage.java:45: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminHelpPage.java:45: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminIP.java:15: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminIP.java:15: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminIP.java:54: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminIP.java:54: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminInstance.java:25: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminInstance.java:25: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminInstance.java:76: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminInstance.java:76: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminKill.java:20: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminKill.java:20: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminKill.java:44: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminKill.java:44: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminLevel.java:48: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminLevel.java:48: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminLevel.java:107: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminLevel.java:107: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminMammon.java:27: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminMammon.java:27: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminMammon.java:98: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminMammon.java:98: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminManor.java:39: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminManor.java:39: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminManor.java:108: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminManor.java:108: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminMenu.java:32: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminMenu.java:32: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminMenu.java:106: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminMenu.java:106: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminMonsterRace.java:26: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminMonsterRace.java:26: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminMonsterRace.java:41: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminMonsterRace.java:41: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminNochannel.java:20: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminNochannel.java:20: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminNochannel.java:122: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminNochannel.java:122: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminOlympiad.java:32: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminOlympiad.java:32: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminOlympiad.java:150: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminOlympiad.java:150: warning: [rawtypes] found raw type: Enum
     [javac] 	public Enum[] getAdminCommandEnum()
     [javac] 	       ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\a.kiperku\IdeaProjects\first\java\l2ft\gameserver\handler\admincommands\impl\AdminPetition.java:23: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminPetition.java:23: warning: [rawtypes] found raw type: Enum
     [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
     [javac] 	                               ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] Note: Some input files additionally use or override a deprecated API.
-    [javac] Note: Some input files additionally use or override a deprecated API that is marked for removal.
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminPetition.java:110: warning: [rawtypes] found raw type: Enum
+    [javac] 	public Enum[] getAdminCommandEnum()
+    [javac] 	       ^
+    [javac]   missing type arguments for generic class Enum<E>
+    [javac]   where E is a type-variable:
+    [javac]     E extends Enum<E> declared in class Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminPledge.java:30: warning: [rawtypes] found raw type: Enum
+    [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
+    [javac] 	                               ^
+    [javac]   missing type arguments for generic class Enum<E>
+    [javac]   where E is a type-variable:
+    [javac]     E extends Enum<E> declared in class Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminPledge.java:190: warning: [rawtypes] found raw type: Enum
+    [javac] 	public Enum[] getAdminCommandEnum()
+    [javac] 	       ^
+    [javac]   missing type arguments for generic class Enum<E>
+    [javac]   where E is a type-variable:
+    [javac]     E extends Enum<E> declared in class Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminPolymorph.java:23: warning: [rawtypes] found raw type: Enum
+    [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
+    [javac] 	                               ^
+    [javac]   missing type arguments for generic class Enum<E>
+    [javac]   where E is a type-variable:
+    [javac]     E extends Enum<E> declared in class Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminPolymorph.java:76: warning: [rawtypes] found raw type: Enum
+    [javac] 	public Enum[] getAdminCommandEnum()
+    [javac] 	       ^
+    [javac]   missing type arguments for generic class Enum<E>
+    [javac]   where E is a type-variable:
+    [javac]     E extends Enum<E> declared in class Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminQuests.java:25: warning: [rawtypes] found raw type: Enum
+    [javac] 	public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar)
+    [javac] 	                               ^
+    [javac]   missing type arguments for generic class Enum<E>
+    [javac]   where E is a type-variable:
+    [javac]     E extends Enum<E> declared in class Enum
+    [javac] Note: C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\network\telnet\commands\TelnetPerfomance.java uses or overrides a deprecated API.
     [javac] Note: Some input files additionally use unchecked or unsafe operations.
     [javac] 100 warnings
-    [javac] only showing the first 100 warnings, of 165 total; use -Xmaxwarns if you would like to see more
 
 gameserver-jar:
-     [exec] Execute failed: java.io.IOException: Cannot run program "svnversion" (in directory "C:\Users\a.kiperku\IdeaProjects\first"): CreateProcess error=2, Не удается найти указанный файл
-      [jar] Building jar: C:\Users\a.kiperku\IdeaProjects\first\build\l2ft-gameserver.jar
+     [exec] Execute failed: java.io.IOException: Cannot run program "svnversion" (in directory "C:\Users\FuzzY\IdeaProjects\first_L2Astri"): CreateProcess error=2, Не удается найти указанный файл
+      [jar] Building jar: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\l2ft-gameserver.jar
 
 gameserver:
-     [copy] Copying 1 file to C:\Users\a.kiperku\IdeaProjects\first\build\dist\serverslibs
-   [delete] Deleting directory C:\Users\a.kiperku\IdeaProjects\first\build\classes
-     [copy] Copying 10 files to C:\Users\a.kiperku\IdeaProjects\first\build\dist\gameserver
+    [mkdir] Created dir: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\dist\tools
+    [mkdir] Created dir: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\dist\gameserver\geodata
+    [mkdir] Created dir: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\dist\gameserver\log
+     [copy] Copying 1 file to C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\dist\serverslibs
+   [delete] Deleting directory C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
+     [copy] Copying 33603 files to C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\dist\gameserver
+     [copy] Copying 105 files to C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\dist\tools
 
 dist:
+     [exec] Result: 2
 
 BUILD SUCCESSFUL
-Total time: 3 minutes 6 seconds
+Total time: 1 minute 7 seconds

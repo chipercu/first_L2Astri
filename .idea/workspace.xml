@@ -4,43 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fca3cbc0-ec86-4562-82c7-c2574caeeab1" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/strixplatform_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AuthLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/gameserver/config/default/ru/security/bront.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/l2ft/gameserver/network/security/KeyPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/l2ft/gameserver/network/security/ProtocolVersion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/commons-pool-1.5.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/strix.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/strixplatform-1.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/strix-platform/StrixClientChecksum/FastDecode.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/strix-platform/StrixClientChecksum/FastEncode.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/strix-platform/StrixClientChecksum/SPFilesChecksum.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/strix-platform/StrixClientChecksum/ВАЖНО!!!.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/strix-platform/config/strix_platform_main.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/strix-platform/log/audit.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/strix-platform/log/auth.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/strix-platform/log/debug.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/strix-platform/log/error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/strix-platform/log/general.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/strix-platform/ВАЖНО!!!.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/strix-platform/Условия Strix-Platform.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/bront_guard_v1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/l2ft_guard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/strix.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lameguard_1_9_5.xml" beforeDir="false" />
+    <list default="true" id="fca3cbc0-ec86-4562-82c7-c2574caeeab1" name="Default" comment="fix: cache">
+      <change afterPath="$PROJECT_DIR$/java/l2ft/gameserver/network/l2/s2c/ServerToClientCommunicationPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/l2ft/gameserver/network/l2/s2c/VersionCheck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/strix.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FirstTeam.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FirstTeam.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compile-full.log" beforeDir="false" afterPath="$PROJECT_DIR$/compile-full.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/gameserver/config/default/ru/FirstGuard.ini" beforeDir="false" afterPath="$PROJECT_DIR$/dist/gameserver/config/default/ru/FirstGuard.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/gameserver/data/scripts/events/EveryDayReward/EveryDayReward.java" beforeDir="false" afterPath="$PROJECT_DIR$/dist/gameserver/data/scripts/events/EveryDayReward/EveryDayReward.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/gameserver/data/scripts/fuzzy/Database_Util/DB_Util/DB_Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/dist/gameserver/data/scripts/fuzzy/Database_Util/DB_Util/DB_Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/gameserver/data/scripts/fuzzy/Database_Util/model/PlayerVariables.java" beforeDir="false" afterPath="$PROJECT_DIR$/dist/gameserver/data/scripts/fuzzy/Database_Util/model/PlayerVariables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/l2ft/gameserver/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/l2ft/gameserver/GameServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/l2ft/gameserver/handler/admincommands/impl/AdminBan.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/l2ft/gameserver/handler/admincommands/impl/AdminBan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/l2ft/gameserver/network/l2/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/l2ft/gameserver/network/l2/GameClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/l2ft/gameserver/network/l2/c2s/AuthLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/l2ft/gameserver/network/l2/c2s/AuthLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/l2ft/gameserver/network/l2/c2s/EnterWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/l2ft/gameserver/network/l2/c2s/EnterWorld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/l2ft/gameserver/utils/HWID.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/l2ft/gameserver/utils/HWID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/l2ft/gameserver/network/l2/c2s/ProtocolVersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/l2ft/gameserver/network/l2/c2s/ProtocolVersion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/strix-platform/config/strix_platform_main.properties" beforeDir="false" afterPath="$PROJECT_DIR$/strix-platform/config/strix_platform_main.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,28 +46,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "aspect.path.notification.shown": "true",
-    "last_opened_file_path": "C:/Users/a.kiperku/IdeaProjects/first/lib/strix.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4091954",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;aspect.path.notification.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/FuzzY/IdeaProjects/first_L2Astri/java/l2ft/gameserver/network/l2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4091954&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\a.kiperku\IdeaProjects\first\dist\gameserver\config\default\ru\security" />
+      <recent name="C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\network\l2" />
+      <recent name="C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\network\l2\c2s" />
       <recent name="C:\Users\a.kiperku\IdeaProjects\first\dist\gameserver\data\scripts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -97,7 +76,7 @@
       <recent name="C:\Users\a.kiperku\IdeaProjects\first\dist\gameserver\config\default\ru" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AuthServer">
+  <component name="RunManager" selected="Application.GameServer">
     <configuration name="AuthServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="DEVELOP" value="true" />
@@ -142,8 +121,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AuthServer" />
         <item itemvalue="Application.GameServer" />
+        <item itemvalue="Application.AuthServer" />
       </list>
     </recent_temporary>
   </component>
@@ -159,7 +138,8 @@
       <workItem from="1691523777173" duration="999000" />
       <workItem from="1691554404071" duration="3246000" />
       <workItem from="1691582157980" duration="9271000" />
-      <workItem from="1691733403634" duration="17184000" />
+      <workItem from="1691831804902" duration="4603000" />
+      <workItem from="1691909915151" duration="2119000" />
     </task>
     <task id="LOCAL-00001" summary="html">
       <created>1691559703613</created>
@@ -196,14 +176,7 @@
       <option name="project" value="LOCAL" />
       <updated>1691587222170</updated>
     </task>
-    <task id="LOCAL-00006" summary="feat : фикс кнопки хтмл, дороботка евента EveryDayReward">
-      <created>1691677622598</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1691677622598</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,7 +200,6 @@
     <MESSAGE value="feat: добавлен софт необходимый для запуска сборки" />
     <MESSAGE value="feat: добавлен ant компилятор" />
     <MESSAGE value="fix: убрана папка build из git" />
-    <MESSAGE value="feat : фикс кнопки хтмл, дороботка евента EveryDayReward" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat : фикс кнопки хтмл, дороботка евента EveryDayReward" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: убрана папка build из git" />
   </component>
 </project>

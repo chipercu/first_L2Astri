@@ -33,6 +33,5 @@
     <orderEntry type="library" name="trove-3.0.3" level="project" />
     <orderEntry type="library" name="ehcache-core-2.5.2" level="project" />
     <orderEntry type="library" name="strixplatform-1.0" level="project" />
-    <orderEntry type="library" name="strix" level="project" />
   </component>
 </module>
