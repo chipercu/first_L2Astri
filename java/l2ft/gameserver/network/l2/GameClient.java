@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Random;
 import java.io.IOException;
 
+import Strix_decopile.Utils.StrixClientData;
+import Strix_decopile.network.IStrixClientData;
+import Strix_decopile.network.cipher.StrixGameCrypt;
 import l2ft.commons.dbutils.DbUtils;
 import l2ft.commons.net.nio.impl.MMOClient;
 import l2ft.commons.net.nio.impl.MMOConnection;
@@ -29,9 +32,6 @@ import l2ft.gameserver.utils.HWID.HardwareID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.strixplatform.network.IStrixClientData;
-import org.strixplatform.network.cipher.StrixGameCrypt;
-import org.strixplatform.utils.StrixClientData;
 
 public final class GameClient extends MMOClient<MMOConnection<GameClient>> implements IStrixClientData {
 

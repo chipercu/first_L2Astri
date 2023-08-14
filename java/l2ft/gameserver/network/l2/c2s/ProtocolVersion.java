@@ -2,6 +2,11 @@ package l2ft.gameserver.network.l2.c2s;
 
 import java.io.IOException;
 
+import Strix_decopile.StrixPlatform;
+import Strix_decopile.Utils.StrixClientData;
+import Strix_decopile.logging.StrixLog;
+import Strix_decopile.managers.ClientGameSessionManager;
+import Strix_decopile.managers.ClientProtocolDataManager;
 import l2ft.gameserver.Config;
 import l2ft.gameserver.network.l2.s2c.KeyPacket;
 import l2ft.gameserver.network.l2.s2c.SendStatus;
@@ -9,11 +14,7 @@ import l2ft.gameserver.network.l2.s2c.SendStatus;
 import l2ft.gameserver.network.l2.s2c.VersionCheck;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.strixplatform.StrixPlatform;
-import org.strixplatform.logging.Log;
-import org.strixplatform.managers.ClientGameSessionManager;
-import org.strixplatform.managers.ClientProtocolDataManager;
-import org.strixplatform.utils.StrixClientData;
+
 
 public class ProtocolVersion extends L2GameClientPacket {
     private static final Logger _log = LoggerFactory.getLogger(ProtocolVersion.class);
@@ -36,7 +37,7 @@ public class ProtocolVersion extends L2GameClientPacket {
                     dataChecksum = readD();
                 }
             } catch (final Exception e) {
-                Log.error("Client [IP=" + getClient().getIpAddr() + "] used unprotected client. Disconnect...");
+                StrixLog.error("Client [IP=" + getClient().getIpAddr() + "] used unprotected client. Disconnect...");
                 getClient().close(new VersionCheck(null));
                 return;
             }
@@ -65,7 +66,7 @@ public class ProtocolVersion extends L2GameClientPacket {
             return;
         } else {
             if (data == null) {
-                Log.error("Client [IP=" + getClient().getIpAddr() + "] used unprotected client. Disconnect...");
+                StrixLog.error("Client [IP=" + getClient().getIpAddr() + "] used unprotected client. Disconnect...");
                 getClient().close(new VersionCheck(null));
                 return;
             } else {
@@ -80,7 +81,7 @@ public class ProtocolVersion extends L2GameClientPacket {
                     sendPacket(new VersionCheck(getClient().enableCrypt()));
                     return;
                 }
-                Log.error("Decode client data failed. See Strix-Platform log file. Disconected client " + getClient().getIpAddr());
+                StrixLog.error("Decode client data failed. See Strix-Platform log file. Disconected client " + getClient().getIpAddr());
                 getClient().close(new VersionCheck(null));
             }
         }

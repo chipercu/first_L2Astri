@@ -1,5 +1,7 @@
 package l2ft.gameserver.network.l2.c2s;
 
+import Strix_decopile.StrixPlatform;
+import Strix_decopile.logging.StrixLog;
 import l2ft.gameserver.Shutdown;
 import l2ft.gameserver.network.authcomm.AuthServerCommunication;
 import l2ft.gameserver.network.authcomm.SessionKey;
@@ -7,8 +9,6 @@ import l2ft.gameserver.network.authcomm.gspackets.PlayerAuthRequest;
 import l2ft.gameserver.network.l2.GameClient;
 import l2ft.gameserver.network.l2.s2c.LoginFail;
 import l2ft.gameserver.network.l2.s2c.ServerClose;
-import org.strixplatform.StrixPlatform;
-import org.strixplatform.logging.Log;
 
 /**
  * cSddddd
@@ -66,7 +66,7 @@ public class AuthLogin extends L2GameClientPacket
 					client.getStrixClientData().setClientAccount(_loginName);
 					if(StrixPlatform.getInstance().isAuthLogEnabled())
 					{
-						Log.auth("Account: [" + _loginName + "] HWID: [" + client.getStrixClientData().getClientHWID() + "] SessionID: [" + client.getStrixClientData().getSessionId() + "] entered to Game Server");
+						StrixLog.auth("Account: [" + _loginName + "] HWID: [" + client.getStrixClientData().getClientHWID() + "] SessionID: [" + client.getStrixClientData().getSessionId() + "] entered to Game Server");
 					}
 				}
 				else

@@ -100,3 +100,9 @@
 [18:01:01] [strixplatform] INFO - Initialized database factory complete
 [18:01:01] [strixplatform] INFO - Loaded [0] banned client HWID data
 [18:01:01] [strixplatform] INFO - |============= Strix-Platform =============|
+[10:57:53] [strixplatform] INFO - |============= Strix-Platform =============|
+[10:57:53] [strixplatform] INFO - Configuration file loaded! Strix-Platform: Enabled
+[10:57:53] [strixplatform] INFO - Automatical update check disabled. If needed, see Strix-Platform configuration file from path strix-platform/config/strix_platform_main.properties
+[10:57:53] [strixplatform] INFO - Initialized database factory complete
+[10:57:53] [strixplatform] INFO - Loaded [0] banned client HWID data
+[10:57:53] [strixplatform] INFO - |============= Strix-Platform =============|

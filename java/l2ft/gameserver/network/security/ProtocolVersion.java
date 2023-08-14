@@ -1,13 +1,13 @@
 package l2ft.gameserver.network.security;
 
+import Strix_decopile.StrixPlatform;
+import Strix_decopile.Utils.StrixClientData;
+import Strix_decopile.managers.ClientGameSessionManager;
+import Strix_decopile.managers.ClientProtocolDataManager;
 import l2ft.gameserver.network.l2.c2s.L2GameClientPacket;
 import l2ft.gameserver.network.l2.s2c.SendStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.strixplatform.StrixPlatform;
-import org.strixplatform.managers.ClientGameSessionManager;
-import org.strixplatform.managers.ClientProtocolDataManager;
-import org.strixplatform.utils.StrixClientData;
 
 public class ProtocolVersion extends L2GameClientPacket
 {

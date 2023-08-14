@@ -1,8 +1,8 @@
 package l2ft.gameserver.network.security;
 
+import Strix_decopile.StrixPlatform;
+import Strix_decopile.Utils.StrixClientData;
 import l2ft.gameserver.network.l2.s2c.L2GameServerPacket;
-import org.strixplatform.StrixPlatform;
-import org.strixplatform.utils.StrixClientData;
 
 public final class KeyPacket extends L2GameServerPacket
 {

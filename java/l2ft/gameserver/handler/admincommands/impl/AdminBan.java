@@ -4,6 +4,9 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.StringTokenizer;
 
+import Strix_decopile.Utils.BannedHWIDInfo;
+import Strix_decopile.managers.ClientBanManager;
+import Strix_decopile.logging.StrixLog;
 import l2ft.gameserver.Announcements;
 import l2ft.gameserver.Config;
 import l2ft.gameserver.handler.admincommands.IAdminCommandHandler;
@@ -23,9 +26,6 @@ import l2ft.gameserver.utils.AdminFunctions;
 import l2ft.gameserver.utils.AutoBan;
 import l2ft.gameserver.utils.Location;
 import l2ft.gameserver.utils.Log;
-import l2ft.gameserver.utils.HWID;
-import org.strixplatform.managers.ClientBanManager;
-import org.strixplatform.utils.BannedHWIDInfo;
 
 public class AdminBan implements IAdminCommandHandler {
     private static enum Commands {
@@ -239,13 +239,13 @@ public class AdminBan implements IAdminCommandHandler {
                             ClientBanManager.getInstance().tryToStoreBan(bhi);
                             final String bannedOut = "Player [Name:{" + targetPlayer.getName() + "}HWID:{" + targetPlayer.getNetConnection().getStrixClientData().getClientHWID() + "}] banned on [" + time + "] minutes from [" + reason + "] reason.";
                             activeChar.sendMessage(bannedOut);
-                            org.strixplatform.logging.Log.audit(bannedOut);
+                            StrixLog.audit(bannedOut);
                             targetPlayer.sendMessage("You banned on [" + time + "] minutes. Reason: " + reason);
                             targetPlayer.kick();
                         } catch (final Exception e) {
                             if (e instanceof SQLException) {
                                 activeChar.sendMessage("Unable to store ban in database. Please check Strix-Platform error log!");
-                                org.strixplatform.logging.Log.error("Exception on GM trying store ban. Exception: " + e.getLocalizedMessage());
+                                StrixLog.error("Exception on GM trying store ban. Exception: " + e.getLocalizedMessage());
                             } else {
                                 activeChar.sendMessage("Command syntax: //ban_hwid PLAYER_NAME(or target) TIME(in minutes) REASON(255 max)");
                             }
@@ -266,7 +266,7 @@ public class AdminBan implements IAdminCommandHandler {
                         } catch (final Exception e) {
                             if (e instanceof SQLException) {
                                 activeChar.sendMessage("Unable to delete ban from database. Please check Strix-Platform error log!");
-                                org.strixplatform.logging.Log.error("Exception on GM trying delete ban. Exception: " + e.getLocalizedMessage());
+                                StrixLog.error("Exception on GM trying delete ban. Exception: " + e.getLocalizedMessage());
                             }
                             break;
                         }

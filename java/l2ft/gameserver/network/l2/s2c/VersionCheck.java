@@ -1,7 +1,8 @@
 package l2ft.gameserver.network.l2.s2c;
 
-import org.strixplatform.StrixPlatform;
-import org.strixplatform.utils.StrixClientData;
+
+import Strix_decopile.StrixPlatform;
+import Strix_decopile.Utils.StrixClientData;
 
 public class VersionCheck extends L2GameServerPacket {
     private final byte[] key;
