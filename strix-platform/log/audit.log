@@ -1,2 +1,17 @@
 [18:01:01] [strixplatform] AUDIT - Key not setted. Nulled send packet. Maybe used network hook.
 [18:01:01] [strixplatform] AUDIT - Key not setted. Nulled send packet. Maybe used network hook.
+[13:08:07] [strixplatform] AUDIT - Client [HWID:7BF2070C0D39D92CE95124DC2EE62A40] incorrect files checksum [ClientFilesChecksum:0 != ServerFilesChecksum:2841960761]
+[13:20:16] [strixplatform] AUDIT - Key not setted. Nulled received packet. Maybe used network hook.
+[13:21:27] [strixplatform] AUDIT - Key not setted. Nulled received packet. Maybe used network hook.
+[13:22:28] [strixplatform] AUDIT - Key not setted. Nulled received packet. Maybe used network hook.
+[13:22:28] [strixplatform] AUDIT - Key not setted. Nulled send packet. Maybe used network hook.
+[13:23:27] [strixplatform] AUDIT - Key not setted. Nulled received packet. Maybe used network hook.
+[13:25:39] [strixplatform] AUDIT - Key not setted. Nulled send packet. Maybe used network hook.
+[13:26:30] [strixplatform] AUDIT - Key not setted. Nulled received packet. Maybe used network hook.
+[13:26:42] [strixplatform] AUDIT - Key not setted. Nulled send packet. Maybe used network hook.
+[13:26:57] [strixplatform] AUDIT - Key not setted. Nulled received packet. Maybe used network hook.
+[13:26:57] [strixplatform] AUDIT - Key not setted. Nulled send packet. Maybe used network hook.
+[13:30:00] [strixplatform] AUDIT - Key not setted. Nulled received packet. Maybe used network hook.
+[13:30:00] [strixplatform] AUDIT - Key not setted. Nulled send packet. Maybe used network hook.
+[13:46:32] [strixplatform] AUDIT - Key not setted. Nulled received packet. Maybe used network hook.
+[13:46:32] [strixplatform] AUDIT - Key not setted. Nulled send packet. Maybe used network hook.

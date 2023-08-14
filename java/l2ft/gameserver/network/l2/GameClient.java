@@ -8,9 +8,6 @@ import java.util.List;
 import java.util.Random;
 import java.io.IOException;
 
-import Strix_decopile.Utils.StrixClientData;
-import Strix_decopile.network.IStrixClientData;
-import Strix_decopile.network.cipher.StrixGameCrypt;
 import l2ft.commons.dbutils.DbUtils;
 import l2ft.commons.net.nio.impl.MMOClient;
 import l2ft.commons.net.nio.impl.MMOConnection;
@@ -33,18 +30,13 @@ import l2ft.gameserver.utils.HWID.HardwareID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public final class GameClient extends MMOClient<MMOConnection<GameClient>> implements IStrixClientData {
+public final class GameClient extends MMOClient<MMOConnection<GameClient>> {
 
     private static final Logger _log = LoggerFactory.getLogger(GameClient.class);
     private static final String NO_IP = "?.?.?.?";
     private SecondaryPasswordAuth _secondaryAuth;
 
-    //TODO[K] - Guard section start
-    // Удаляем эту строчку. public GameCrypt _crypt = null;
-    public StrixGameCrypt gameCrypt = null;
 
-    private StrixClientData clientData;
-    //TODO[K] - Guard section end
 
     public HardwareID HWIDS = null, ALLOW_HWID = null;
     public boolean protect_used = false;
@@ -79,12 +71,7 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
         super(con);
 
         _state = GameClientState.CONNECTED;
-//        _crypt = new GameCrypt();
-        //TODO[K] - Guard section start
-        // Удаляем эту строчку. _crypt = new GameCrypt();
-        gameCrypt = new StrixGameCrypt();
-        //TODO[K] - Guard section end
-
+        _crypt = new GameCrypt();
         _ip = con.getSocket().getInetAddress().getHostAddress();
     }
 
@@ -284,8 +271,7 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
 
     @Override
     public boolean decrypt(ByteBuffer buf, int size) {
-        boolean ret = _crypt.decrypt(buf.array(), buf.position(), size);
-        return ret;
+        return _crypt.decrypt(buf.array(), buf.position(), size);
     }
 
     public void sendPacket(L2GameServerPacket gsp) {
@@ -314,12 +300,7 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
 
     public byte[] enableCrypt() {
         byte[] key = BlowFishKeygen.getRandomKey();
-//        _crypt.setKey(key);
-        //TODO[K] - Guard section start
-        //// Удаляем эту строчку. _crypt.setKey(key);
-        gameCrypt.setKey(key);
-        // TODO[K] - Strix section end
-
+        _crypt.setKey(key);
         return key;
     }
 
@@ -437,18 +418,6 @@ public final class GameClient extends MMOClient<MMOConnection<GameClient>> imple
         if (hwid != null && !hwid.isEmpty())
             ALLOW_HWID = new HardwareID(hwid);
     }
-
-    //TODO[K] - Guard section start
-    @Override
-    public void setStrixClientData(final StrixClientData clientData) {
-        this.clientData = clientData;
-    }
-
-    @Override
-    public StrixClientData getStrixClientData() {
-        return clientData;
-    }
-    //TODO[K] - Guard section end
 
 	/*private void logHWID()
 	{

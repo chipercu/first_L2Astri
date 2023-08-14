@@ -328,6 +328,8 @@ public class GameServer {
     }
 
     public static void main(String[] args) throws Exception {
+
+
 		BasicConfigurator.configure();
 //        CacheManager.create("dist/gameserver/config/default/ru/xml/ehcache.xml");
         new GameServer();

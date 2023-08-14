@@ -4,9 +4,6 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.StringTokenizer;
 
-import Strix_decopile.Utils.BannedHWIDInfo;
-import Strix_decopile.managers.ClientBanManager;
-import Strix_decopile.logging.StrixLog;
 import l2ft.gameserver.Announcements;
 import l2ft.gameserver.Config;
 import l2ft.gameserver.handler.admincommands.IAdminCommandHandler;
@@ -22,10 +19,7 @@ import l2ft.gameserver.network.l2.components.ChatType;
 import l2ft.gameserver.network.l2.components.CustomMessage;
 import l2ft.gameserver.network.l2.s2c.NpcHtmlMessage;
 import l2ft.gameserver.scripts.Functions;
-import l2ft.gameserver.utils.AdminFunctions;
-import l2ft.gameserver.utils.AutoBan;
-import l2ft.gameserver.utils.Location;
-import l2ft.gameserver.utils.Log;
+import l2ft.gameserver.utils.*;
 
 public class AdminBan implements IAdminCommandHandler {
     private static enum Commands {
@@ -198,82 +192,30 @@ public class AdminBan implements IAdminCommandHandler {
                     Functions.sendDebugMessage(activeChar, "Player account " + banaccount + " is banned, player " + banned.getName() + " kicked.");
                     break;
                 case admin_banhwid:
-//                case admin_ban_hwid:
-//                    try {
-//                        if (wordList[1].equals("$target"))
-//                            if (activeChar.getTarget() != null && activeChar.getTarget().isPlayer())
-//                                wordList[1] = activeChar.getTarget().getName();
-//                        activeChar.sendMessage(HWID.handleBanHWID(wordList));
-//                    } catch (final Exception e) {
-//                        activeChar.sendMessage("USAGE: //banhwid char_name|hwid [kick:true|false] [reason]");
-//                    }
-//                    break;
-                case admin_unbanhwid:
-//                case admin_unban_hwid:
-//                    if (wordList.length < 2) {
-//                        activeChar.sendMessage("USAGE: //unbanhwid hwid");
-//                        return false;
-//                    }
-//                    if (wordList[1].length() != 32) {
-//                        activeChar.sendMessage(wordList[1] + " is not like HWID");
-//                        return false;
-//                    }
-//                    HWID.UnbanHWID(wordList[1]);
-//                    activeChar.sendMessage("HWID " + wordList[1] + " unbanned");
-//                    break;
                 case admin_ban_hwid:
-                    st.nextToken();
-                    Player targetPlayer = null;
-                    if (activeChar.getTarget() != null) {
-                        targetPlayer = activeChar.getTarget().getPlayer();
-                    } else {
-                        final String playeraName = st.nextToken();
-                        targetPlayer = World.getPlayer(playeraName);
-                    }
-
-                    if (targetPlayer != null) {
-                        try {
-                            final Long time = Long.parseLong(st.nextToken());
-                            final String reason = st.nextToken();
-                            final BannedHWIDInfo bhi = new BannedHWIDInfo(targetPlayer.getNetConnection().getStrixClientData().getClientHWID(), (System.currentTimeMillis() + time * 60 * 1000), reason, activeChar.getName());
-                            ClientBanManager.getInstance().tryToStoreBan(bhi);
-                            final String bannedOut = "Player [Name:{" + targetPlayer.getName() + "}HWID:{" + targetPlayer.getNetConnection().getStrixClientData().getClientHWID() + "}] banned on [" + time + "] minutes from [" + reason + "] reason.";
-                            activeChar.sendMessage(bannedOut);
-                            StrixLog.audit(bannedOut);
-                            targetPlayer.sendMessage("You banned on [" + time + "] minutes. Reason: " + reason);
-                            targetPlayer.kick();
-                        } catch (final Exception e) {
-                            if (e instanceof SQLException) {
-                                activeChar.sendMessage("Unable to store ban in database. Please check Strix-Platform error log!");
-                                StrixLog.error("Exception on GM trying store ban. Exception: " + e.getLocalizedMessage());
-                            } else {
-                                activeChar.sendMessage("Command syntax: //ban_hwid PLAYER_NAME(or target) TIME(in minutes) REASON(255 max)");
-                            }
-                            break;
-                        }
-                    } else {
-                        activeChar.sendMessage("Unable to find this player.");
+                    try {
+                        if (wordList[1].equals("$target"))
+                            if (activeChar.getTarget() != null && activeChar.getTarget().isPlayer())
+                                wordList[1] = activeChar.getTarget().getName();
+                        activeChar.sendMessage(HWID.handleBanHWID(wordList));
+                    } catch (final Exception e) {
+                        activeChar.sendMessage("USAGE: //banhwid char_name|hwid [kick:true|false] [reason]");
                     }
                     break;
+                case admin_unbanhwid:
                 case admin_unban_hwid:
-                    st.nextToken();
-                    final String playeraHWID = st.nextToken();
-
-                    if (playeraHWID != null && playeraHWID.length() == 32) {
-                        try {
-                            ClientBanManager.getInstance().tryToDeleteBan(playeraHWID);
-                            activeChar.sendMessage("Player unbaned and delete from database.");
-                        } catch (final Exception e) {
-                            if (e instanceof SQLException) {
-                                activeChar.sendMessage("Unable to delete ban from database. Please check Strix-Platform error log!");
-                                StrixLog.error("Exception on GM trying delete ban. Exception: " + e.getLocalizedMessage());
-                            }
-                            break;
-                        }
-                    } else {
-                        activeChar.sendMessage("Command syntax: //unban_hwid HWID_STRING(size 32)");
+                    if (wordList.length < 2) {
+                        activeChar.sendMessage("USAGE: //unbanhwid hwid");
+                        return false;
                     }
+                    if (wordList[1].length() != 32) {
+                        activeChar.sendMessage(wordList[1] + " is not like HWID");
+                        return false;
+                    }
+                    HWID.UnbanHWID(wordList[1]);
+                    activeChar.sendMessage("HWID " + wordList[1] + " unbanned");
                     break;
+
             }
 
         return true;

@@ -2,16 +2,10 @@ package l2ft.gameserver.network.l2.c2s;
 
 import java.io.IOException;
 
-import Strix_decopile.StrixPlatform;
-import Strix_decopile.Utils.StrixClientData;
-import Strix_decopile.logging.StrixLog;
-import Strix_decopile.managers.ClientGameSessionManager;
-import Strix_decopile.managers.ClientProtocolDataManager;
 import l2ft.gameserver.Config;
 import l2ft.gameserver.network.l2.s2c.KeyPacket;
 import l2ft.gameserver.network.l2.s2c.SendStatus;
 
-import l2ft.gameserver.network.l2.s2c.VersionCheck;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,30 +13,10 @@ import org.slf4j.LoggerFactory;
 public class ProtocolVersion extends L2GameClientPacket {
     private static final Logger _log = LoggerFactory.getLogger(ProtocolVersion.class);
 
-    //TODO[K] - Guard section start
-    private byte[] data;
-    private int dataChecksum;
-    //TODO[K] - Guard section end
-
     private int _version;
 
     protected void readImpl() {
         _version = readD();
-        //TODO[K] - Guard section start
-        if (StrixPlatform.getInstance().isPlatformEnabled()) {
-            try {
-                if (getByteBuffer().remaining() >= StrixPlatform.getInstance().getProtocolVersionDataSize()) {
-                    data = new byte[StrixPlatform.getInstance().getClientDataSize()];
-                    readB(data);
-                    dataChecksum = readD();
-                }
-            } catch (final Exception e) {
-                StrixLog.error("Client [IP=" + getClient().getIpAddr() + "] used unprotected client. Disconnect...");
-                getClient().close(new VersionCheck(null));
-                return;
-            }
-        }
-        //TODO[K] - Guard section end
     }
 
     protected void runImpl() throws IOException {
@@ -59,36 +33,8 @@ public class ProtocolVersion extends L2GameClientPacket {
             return;
         }
 
-        //TODO - Strix section start
-        if (!StrixPlatform.getInstance().isPlatformEnabled()) {
-            getClient().setRevision(_version);
-            sendPacket(new VersionCheck(getClient().enableCrypt()));
-            return;
-        } else {
-            if (data == null) {
-                StrixLog.error("Client [IP=" + getClient().getIpAddr() + "] used unprotected client. Disconnect...");
-                getClient().close(new VersionCheck(null));
-                return;
-            } else {
-                final StrixClientData clientData = ClientProtocolDataManager.getInstance().getDecodedData(data, dataChecksum);
-                if (clientData != null) {
-                    if (!ClientGameSessionManager.getInstance().checkServerResponse(clientData)) {
-                        getClient().close(new VersionCheck(null, clientData));
-                        return;
-                    }
-                    getClient().setStrixClientData(clientData);
-                    getClient().setRevision(_version);
-                    sendPacket(new VersionCheck(getClient().enableCrypt()));
-                    return;
-                }
-                StrixLog.error("Decode client data failed. See Strix-Platform log file. Disconected client " + getClient().getIpAddr());
-                getClient().close(new VersionCheck(null));
-            }
-        }
-        //TODO[K] - Strix section end
-
-//        getClient().setRevision(_version);
-//        sendPacket(new KeyPacket(_client.enableCrypt()));
+        getClient().setRevision(_version);
+        sendPacket(new KeyPacket(_client.enableCrypt()));
     }
 
     public String getType() {

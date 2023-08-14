@@ -2,7 +2,6 @@
 init:
 
 compile-commons:
-   [delete] Deleting directory C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
     [mkdir] Created dir: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
     [javac] Compiling 86 source files to C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
     [javac] warning: [path] bad path element "C:\Users\FuzzY\IdeaProjects\first_L2Astri\lib\ecj-4.2.jar": no such file or directory
@@ -42,12 +41,18 @@ authserver-jar:
       [jar] Building jar: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\l2ft-loginserver.jar
 
 authserver:
+    [mkdir] Created dir: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\dist
+    [mkdir] Created dir: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\dist\loginserver
+    [mkdir] Created dir: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\dist\serverslibs
+    [mkdir] Created dir: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\dist\loginserver\log
      [copy] Copying 2 files to C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\dist\serverslibs
+     [copy] Copying 26 files to C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\dist\serverslibs
+     [copy] Copying 18 files to C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\dist\loginserver
 
 compile-gameserver:
    [delete] Deleting directory C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
     [mkdir] Created dir: C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
-    [javac] Compiling 1733 source files to C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
+    [javac] Compiling 1731 source files to C:\Users\FuzzY\IdeaProjects\first_L2Astri\build\classes
     [javac] warning: [path] bad path element "C:\Users\FuzzY\IdeaProjects\first_L2Astri\lib\ecj-4.2.jar": no such file or directory
     [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\model\Skill.java:2371: warning: [static] static variable should be qualified by type name, SkillTrait, instead of by an expression
     [javac] 		return getTraitType() == _traitType.DERANGEMENT;
@@ -189,19 +194,19 @@ compile-gameserver:
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminBan.java:51: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminBan.java:45: warning: [rawtypes] found raw type: Enum
     [javac]     public boolean useAdminCommand(Enum comm, String[] wordList, String fullString, Player activeChar) {
     [javac]                                    ^
     [javac]   missing type arguments for generic class Enum<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Enum<E> declared in class Enum
-    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminBan.java:318: warning: [rawtypes] found raw type: Collection
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminBan.java:260: warning: [rawtypes] found raw type: Collection
     [javac]         Collection list;
     [javac]         ^
     [javac]   missing type arguments for generic class Collection<E>
     [javac]   where E is a type-variable:
     [javac]     E extends Object declared in interface Collection
-    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminBan.java:403: warning: [rawtypes] found raw type: Enum
+    [javac] C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\handler\admincommands\impl\AdminBan.java:345: warning: [rawtypes] found raw type: Enum
     [javac]     public Enum[] getAdminCommandEnum() {
     [javac]            ^
     [javac]   missing type arguments for generic class Enum<E>
@@ -642,4 +647,4 @@ dist:
      [exec] Result: 2
 
 BUILD SUCCESSFUL
-Total time: 1 minute 7 seconds
+Total time: 1 minute 14 seconds

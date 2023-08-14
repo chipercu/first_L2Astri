@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 import l2ft.commons.threading.RunnableImpl;
 import l2ft.gameserver.GameTimeController;
@@ -114,7 +115,7 @@ public class EnterWorld extends L2GameClientPacket {
 
         synchronized (_lock) {
             for (Player cha : GameObjectsStorage.getAllPlayersForIterate()) {
-                if (MyStoreId == cha.getStoredId())
+                if (Objects.equals(MyStoreId, cha.getStoredId()))
                     continue;
                 try {
                     if (cha.getObjectId() == MyObjectId) {
