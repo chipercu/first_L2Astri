@@ -6,8 +6,8 @@ public class Button implements Build {
     private String action;
     private int width;
     private int height;
-    private String back;
-    private String fore;
+    private String back = "L2UI_ct1.button_df";
+    private String fore = "L2UI_ct1.button_df";
 
     private String defaultBack = "L2UI_ct1.button_df";
     private String defaultFore = "L2UI_ct1.button_df";
@@ -20,7 +20,12 @@ public class Button implements Build {
         this.height = height;
         this.back = back;
         this.fore = fore;
-
+    }
+    public Button(String value, String action, int width, int height) {
+        this.value = value;
+        this.action = action;
+        this.width = width;
+        this.height = height;
     }
     public Button(String action, int width, int height, String back, String fore) {
         this.action = action;
@@ -28,7 +33,6 @@ public class Button implements Build {
         this.height = height;
         this.back = back;
         this.fore = fore;
-
     }
 
     public String getValue() {
@@ -89,6 +93,8 @@ public class Button implements Build {
     public String build() {
 
 //        action="bypass -h scripts_events.lastHero.LastHero:addPlayer";
+
+
 
         return "<button " + (value != null ? "value=\"" + value : "")+ "\"" + action + " width="+ width + " height=" + height + " back=\"" + back + "\" fore=\"" + fore +  "\">";
     }

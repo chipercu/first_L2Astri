@@ -1,20 +1,17 @@
-package l2ft.gameserver.network.l2.c2s;
+package fuzzy.fake_players.model;
 
+import l2ft.commons.util.Rnd;
 import l2ft.gameserver.Config;
-import l2ft.gameserver.dao.CharacterDAO;
 import l2ft.gameserver.data.xml.holder.SkillAcquireHolder;
-import l2ft.gameserver.instancemanager.QuestManager;
 import l2ft.gameserver.model.Player;
+import l2ft.gameserver.model.SkillLearn;
 import l2ft.gameserver.model.actor.instances.player.Bonus;
 import l2ft.gameserver.model.actor.instances.player.ShortCut;
-import l2ft.gameserver.model.SkillLearn;
 import l2ft.gameserver.model.base.AcquireType;
 import l2ft.gameserver.model.base.ClassId;
 import l2ft.gameserver.model.base.Experience;
 import l2ft.gameserver.model.items.ItemInstance;
-import l2ft.gameserver.model.quest.Quest;
 import l2ft.gameserver.network.l2.GameClient;
-import l2ft.gameserver.network.l2.s2c.CharacterCreateFail;
 import l2ft.gameserver.network.l2.s2c.CharacterCreateSuccess;
 import l2ft.gameserver.network.l2.s2c.CharacterSelectionInfo;
 import l2ft.gameserver.tables.SkillTable;
@@ -22,63 +19,40 @@ import l2ft.gameserver.templates.PlayerTemplate;
 import l2ft.gameserver.templates.item.CreateItem;
 import l2ft.gameserver.templates.item.ItemTemplate;
 import l2ft.gameserver.utils.ItemFunctions;
-import l2ft.gameserver.utils.Util;
+import l2ft.gameserver.utils.Location;
 
-public class CharacterCreate extends L2GameClientPacket {
-    // cSdddddddddddd
-    private String _name;
-    private int _sex;
-    private int _classId;
-    private int _hairStyle;
-    private int _hairColor;
-    private int _face;
+/**
+ * Created by a.kiperku
+ * Date: 15.08.2023
+ */
 
-    @Override
-    protected void readImpl() {
-        _name = readS();
-        readD(); // race
-        _sex = readD();
-        _classId = readD();
-        readD(); // int
-        readD(); // str
-        readD(); // con
-        readD(); // men
-        readD(); // dex
-        readD(); // wit
-        _hairStyle = readD();
-        _hairColor = readD();
-        _face = readD();
+public class Fake_constructor {
+
+    private String name;
+    private String title;
+    private int level;
+    private ClassId classId;
+    private String sex;
+
+
+    public Fake_constructor(String name, String title, int level, ClassId classId, String sex) {
+        this.name = name;
+        this.title = title;
+        this.level = level;
+        this.classId = classId;
+        this.sex = sex;
     }
 
-    @Override
-    protected void runImpl() {
-        for (ClassId cid : ClassId.VALUES)
-            if (cid.getId() == _classId && cid.getLevel() != 1)
-                return;
-
-        if (CharacterDAO.getInstance().accountCharNumber(getClient().getLogin()) >= 8) {
-            sendPacket(CharacterCreateFail.REASON_TOO_MANY_CHARACTERS);
-            return;
+    public void initNewChar(Player spawner) {
+        int _sex = 0;
+        if (sex.equals("мужской")){
+            _sex = 1;
         }
 
-        if (!Util.isMatchingRegexp(_name, Config.CNAME_TEMPLATE)) {
-            sendPacket(CharacterCreateFail.REASON_16_ENG_CHARS);
-            return;
-        } else if (CharacterDAO.getInstance().getObjectIdByName(_name) > 0) {
-            sendPacket(CharacterCreateFail.REASON_NAME_ALREADY_EXISTS);
-            return;
-        }
-
-        Player newChar = Player.create(_classId, _sex, getClient().getLogin(), _name, _hairStyle, _hairColor, _face);
+        Player newChar = Player.create(classId.getId(), _sex, "fake", name, Rnd.get(3), Rnd.get(3), Rnd.get(3));
         if (newChar == null)
             return;
 
-        sendPacket(CharacterCreateSuccess.STATIC);
-
-        initNewChar(getClient(), newChar);
-    }
-
-    private void initNewChar(GameClient client, Player newChar) {
         PlayerTemplate template = newChar.getTemplate();
 
         Player.restoreCharSubClasses(newChar);
@@ -111,7 +85,7 @@ public class CharacterCreate extends L2GameClientPacket {
                 newChar.getInventory().equipItem(item);
         }
 
-        ClassId nclassId = ClassId.VALUES[_classId];
+        ClassId nclassId = ClassId.VALUES[classId.getId()];
         if (Config.ALLOW_START_ITEMS) {
             if (nclassId.isMage()) {
                 for (int i = 0; i < Config.START_ITEMS_MAGE.length; i++) {
@@ -136,6 +110,8 @@ public class CharacterCreate extends L2GameClientPacket {
         item = ItemFunctions.createItem(9716);
         item.setCount(10);
         newChar.getInventory().addItem(item);
+        long exp_add = Experience.LEVEL[level] - newChar.getExp();
+        newChar.addExpAndSp(exp_add, 1000000000);
 
         for (SkillLearn skill : SkillAcquireHolder.getInstance().getAvailableSkills(newChar, AcquireType.NORMAL))
             newChar.addSkill(SkillTable.getInstance().getInfo(skill.getId(), skill.getLevel()), true);
@@ -159,22 +135,72 @@ public class CharacterCreate extends L2GameClientPacket {
         // air ship
         newChar.registerShortCut(new ShortCut(0, ShortCut.PAGE_AIRSHIP, ShortCut.TYPE_ACTION, 70, 0, 1));
 
-        startTutorialQuest(newChar);
-
         newChar.setCurrentHpMp(newChar.getMaxHp(), newChar.getMaxMp());
         newChar.setCurrentCp(0); // retail
-        newChar.setOnlineStatus(false);
+        newChar.setOnlineStatus(true);
+        newChar.setOfflineMode(false);
+        newChar.setIsOnline(true);
+        newChar.updateOnlineStatus();
+        newChar.setLoc(Location.findAroundPosition(spawner.getLoc(), 300, spawner.getGeoIndex()));
+        newChar.spawnMe();
+
 
         newChar.store(false);
         newChar.getInventory().store();
-        newChar.deleteMe();
 
-        client.setCharSelection(CharacterSelectionInfo.loadCharacterSelectInfo(client.getLogin()));
     }
 
-    public static void startTutorialQuest(Player player) {
-        Quest q = QuestManager.getQuest(255);
-        if (q != null)
-            q.newQuestState(player, Quest.CREATED);
+
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public ClassId getClassId() {
+        return classId;
+    }
+
+    public void setClassId(ClassId classId) {
+        this.classId = classId;
+    }
+
+    @Override
+    public String toString() {
+        return "Fake_constructor{" +
+                "name='" + name + '\'' +
+                ", title='" + title + '\'' +
+                ", level=" + level +
+                ", classId=" + classId.name() +
+                ", sex='" + sex + '\'' +
+                '}';
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 }
