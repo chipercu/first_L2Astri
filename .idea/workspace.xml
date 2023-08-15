@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fca3cbc0-ec86-4562-82c7-c2574caeeab1" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/dist/gameserver/data/scripts/fuzzy/Html_Constructor/tags/Combobox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/gameserver/data/scripts/fuzzy/Html_Constructor/tags/Edit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/gameserver/data/scripts/fuzzy/fake_players/model/Fake_constructor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/gameserver/data/scripts/handler/admincommands/fake.html" afterDir="false" />
+    <list default="true" id="fca3cbc0-ec86-4562-82c7-c2574caeeab1" name="Default" comment="feat:bot">
+      <change afterPath="$PROJECT_DIR$/dist/gameserver/data/scripts/fuzzy/fake_players/FakeItems.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/gameserver/data/scripts/fuzzy/fake_players/FakeManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/gameserver/data/scripts/fuzzy/fake_players/model/FakeWeaponType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/gameserver/data/scripts/fuzzy/Html_Constructor/tags/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/dist/gameserver/data/scripts/fuzzy/Html_Constructor/tags/Button.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/gameserver/data/scripts/fuzzy/fake_players/model/Fake_constructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/dist/gameserver/data/scripts/fuzzy/fake_players/model/Fake_constructor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/gameserver/data/scripts/handler/admincommands/AdminFakePlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/dist/gameserver/data/scripts/handler/admincommands/AdminFakePlayers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/l2ft/gameserver/network/l2/c2s/CharacterCreate.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/l2ft/gameserver/network/l2/c2s/CharacterCreate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/gameserver/data/scripts/handler/admincommands/fake.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/l2ft/gameserver/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/l2ft/gameserver/model/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,9 +22,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -42,30 +40,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "aspect.path.notification.shown": "true",
-    "last_opened_file_path": "C:/Users/a.kiperku/IdeaProjects/first/lib/strixplatform-1.0.jar!/org/strixplatform/network",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4091954",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;aspect.path.notification.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/FuzzY/IdeaProjects/first_L2Astri/java/l2ft/gameserver/network/l2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4091954&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\a.kiperku\IdeaProjects\first\lib\strixplatform-1.0.jar!\org\strixplatform\network" />
-      <recent name="C:\Users\a.kiperku\IdeaProjects\first\dist\gameserver\config\default\ru\security" />
+      <recent name="C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\network\l2" />
+      <recent name="C:\Users\FuzzY\IdeaProjects\first_L2Astri\java\l2ft\gameserver\network\l2\c2s" />
       <recent name="C:\Users\a.kiperku\IdeaProjects\first\dist\gameserver\data\scripts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -73,8 +70,8 @@
       <recent name="C:\Users\a.kiperku\IdeaProjects\first\dist\gameserver\config\default\ru" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="fuzzy.Html_Constructor.tags" />
-      <recent name="Strix_decopile" />
+      <recent name="fuzzy.fake_players" />
+      <recent name="handler.admincommands" />
     </key>
   </component>
   <component name="RunManager" selected="Application.GameServer">
@@ -117,9 +114,13 @@
       </method>
     </configuration>
     <configuration name="StrixPlatform" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="DEVELOP" value="true" />
+        <env name="DB_PASSWORD" value="68464846l2" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="Strix_decopile.StrixPlatform" />
       <module name="FirstTeam" />
-      <option name="PROGRAM_PARAMETERS" value="l2ft.gameserver.GameServer" />
+      <option name="PROGRAM_PARAMETERS" value="l2ft.gameserver.GameServer java -server -Dfile.encoding=UTF-8 -Xmx1G -cp dist/gameserver/config/default/ru/xml;lib/*;" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Strix_decopile.*" />
@@ -155,7 +156,9 @@
       <workItem from="1691523777173" duration="999000" />
       <workItem from="1691554404071" duration="3246000" />
       <workItem from="1691582157980" duration="9271000" />
-      <workItem from="1691733403634" duration="17184000" />
+      <workItem from="1691831804902" duration="4603000" />
+      <workItem from="1691909915151" duration="2119000" />
+      <workItem from="1692130113759" duration="479000" />
     </task>
     <task id="LOCAL-00001" summary="html">
       <created>1691559703613</created>
@@ -192,18 +195,22 @@
       <option name="project" value="LOCAL" />
       <updated>1691587222170</updated>
     </task>
-    <task id="LOCAL-00006" summary="feat : фикс кнопки хтмл, дороботка евента EveryDayReward">
-      <created>1691677622598</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1691677622598</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -223,7 +230,6 @@
     <MESSAGE value="feat: добавлен софт необходимый для запуска сборки" />
     <MESSAGE value="feat: добавлен ant компилятор" />
     <MESSAGE value="fix: убрана папка build из git" />
-    <MESSAGE value="feat : фикс кнопки хтмл, дороботка евента EveryDayReward" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat : фикс кнопки хтмл, дороботка евента EveryDayReward" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: убрана папка build из git" />
   </component>
 </project>

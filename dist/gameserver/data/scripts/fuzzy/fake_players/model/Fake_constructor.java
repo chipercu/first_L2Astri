@@ -1,5 +1,6 @@
 package fuzzy.fake_players.model;
 
+import fuzzy.fake_players.FakeItems;
 import l2ft.commons.util.Rnd;
 import l2ft.gameserver.Config;
 import l2ft.gameserver.data.xml.holder.SkillAcquireHolder;
@@ -9,17 +10,18 @@ import l2ft.gameserver.model.actor.instances.player.Bonus;
 import l2ft.gameserver.model.actor.instances.player.ShortCut;
 import l2ft.gameserver.model.base.AcquireType;
 import l2ft.gameserver.model.base.ClassId;
+import l2ft.gameserver.model.base.ClassType2;
 import l2ft.gameserver.model.base.Experience;
 import l2ft.gameserver.model.items.ItemInstance;
-import l2ft.gameserver.network.l2.GameClient;
-import l2ft.gameserver.network.l2.s2c.CharacterCreateSuccess;
-import l2ft.gameserver.network.l2.s2c.CharacterSelectionInfo;
+import l2ft.gameserver.scripts.Functions;
 import l2ft.gameserver.tables.SkillTable;
 import l2ft.gameserver.templates.PlayerTemplate;
 import l2ft.gameserver.templates.item.CreateItem;
 import l2ft.gameserver.templates.item.ItemTemplate;
 import l2ft.gameserver.utils.ItemFunctions;
 import l2ft.gameserver.utils.Location;
+
+import java.util.Map;
 
 /**
  * Created by a.kiperku
@@ -28,19 +30,24 @@ import l2ft.gameserver.utils.Location;
 
 public class Fake_constructor {
 
+
     private String name;
     private String title;
     private int level;
     private ClassId classId;
     private String sex;
+    private String armor;
+    private String weapon;
 
 
-    public Fake_constructor(String name, String title, int level, ClassId classId, String sex) {
+    public Fake_constructor(String name, String title, int level, ClassId classId, String sex, String armor, String weapon) {
         this.name = name;
         this.title = title;
         this.level = level;
         this.classId = classId;
         this.sex = sex;
+        this.armor = armor;
+        this.weapon = weapon;
     }
 
     public void initNewChar(Player spawner) {
@@ -140,17 +147,161 @@ public class Fake_constructor {
         newChar.setOnlineStatus(true);
         newChar.setOfflineMode(false);
         newChar.setIsOnline(true);
+        newChar.setIsPhantom(true);
         newChar.updateOnlineStatus();
         newChar.setLoc(Location.findAroundPosition(spawner.getLoc(), 300, spawner.getGeoIndex()));
         newChar.spawnMe();
-
-
+        addEquip(newChar);
+        addAndEquipWeapon(newChar, weapon);
         newChar.store(false);
         newChar.getInventory().store();
 
     }
 
 
+    private void addEquip(Player player){
+        if (armor.equals("S") || armor.equals("S84")){ //TODO временная затычка
+            armor = "S80";
+        }
+        addAndEquipArmor(player, FakeItems.jewels_sets.get(armor));
+        if (player.isMageClass()){
+            addAndEquipArmor(player, FakeItems.robe_sets.get(armor));
+        }else {
+            final ClassType2 type2 = player.getClassId().getType2();
+            if (type2 == ClassType2.Knight){
+                addAndEquipArmor(player, FakeItems.heavy_sets.get(armor));
+            }else {
+                addAndEquipArmor(player, FakeItems.light_sets.get(armor));
+            }
+        }
+    }
+
+    private void addAndEquipWeapon(Player player, String weaponGrade){
+        final Map<FakeWeaponType, Integer[]> weapons_sets = FakeItems.weapons_sets;
+        Integer[] weapons = null;
+        if (player.isMageClass()){
+            weapons = weapons_sets.get(FakeWeaponType.MAGE_SWORD);
+        }else {
+            switch (player.getClassId()){
+                case duelist:
+                case gladiator:
+                case swordSinger:
+                case swordMuse:
+                case spectralDancer:
+                case bladedancer:{
+                    weapons = weapons_sets.get(FakeWeaponType.DUAL);
+                    break;
+                }
+                case dreadnought:
+                case warlord:
+                    weapons = weapons_sets.get(FakeWeaponType.POLE);
+                    break;
+                case orcMonk:
+                case tyrant:
+                case grandKhauatari:
+                    weapons = weapons_sets.get(FakeWeaponType.FIST);
+                    break;
+                case artisan:
+                case warsmith:
+                case maestro:
+                    weapons = weapons_sets.get(FakeWeaponType.BLUNT);
+                    break;
+                case orcRaider:
+                case destroyer:
+                case titan:
+                    weapons = weapons_sets.get(FakeWeaponType.BIG_SWORD);
+                    break;
+                case rogue:
+                case hawkeye:
+                case elvenScout:
+                case silverRanger:
+                case assassin:
+                case phantomRanger:
+                case sagittarius:
+                case moonlightSentinel:
+                case ghostSentinel:
+                    weapons = weapons_sets.get(FakeWeaponType.BOW);
+                    break;
+                case treasureHunter:
+                case plainsWalker:
+                case abyssWalker:
+                case adventurer:
+                case windRider:
+                case ghostHunter:
+                case scavenger:
+                case bountyHunter:
+                case fortuneSeeker:
+                    weapons = weapons_sets.get(FakeWeaponType.DAGGER);
+                    break;
+                case maleSoldier:
+                case femaleSoldier:
+                case trooper:
+                case warder:
+                case maleSoulbreaker:
+                case femaleSoulbreaker:
+                case maleSoulhound:
+                case femaleSoulhound:
+                case inspector:
+                case judicator:
+                    weapons = weapons_sets.get(FakeWeaponType.RAPIER);
+                    break;
+                case berserker:
+                case doombringer:
+                    weapons = weapons_sets.get(FakeWeaponType.ANCIENTS_WORD);
+                    break;
+                case trickster:
+                case arbalester:
+                    weapons = weapons_sets.get(FakeWeaponType.CROSSBOW);
+                    break;
+            }
+        }
+
+        switch (weapon){
+            case "C":{
+                addAndEquipItem(player, weapons[0]);
+                if (player.getClassId().getType2() == ClassType2.Knight){
+                    addAndEquipItem(player, weapons_sets.get(FakeWeaponType.SHIELD)[0]);
+                }
+                break;
+            }
+            case "B": {
+                addAndEquipItem(player, weapons[1]);
+                if (player.getClassId().getType2() == ClassType2.Knight){
+                    addAndEquipItem(player, weapons_sets.get(FakeWeaponType.SHIELD)[1]);
+                }
+                break;
+            }
+            case "A":{
+                addAndEquipItem(player, weapons[2]);
+                if (player.getClassId().getType2() == ClassType2.Knight){
+                    addAndEquipItem(player, weapons_sets.get(FakeWeaponType.SHIELD)[2]);
+                }
+                break;
+            }
+            case "S":
+            case "S80":
+            case "S84":{
+                addAndEquipItem(player, weapons[3]);
+                if (player.getClassId().getType2() == ClassType2.Knight){
+                    addAndEquipItem(player, weapons_sets.get(FakeWeaponType.SHIELD)[3]);
+                }
+                break;
+            }
+            default:
+                throw new IllegalStateException("Unexpected value: " + weapon);
+        }
+    }
+
+    private void addAndEquipArmor(Player player, Integer[] integers) {
+        for (Integer id: integers){
+            addAndEquipItem(player, id);
+        }
+    }
+    private void addAndEquipItem(Player player, int itemId){
+        Functions.addItem(player, itemId, 1);
+        ItemInstance item = player.getInventory().getItemByItemId(itemId);
+        player.getInventory().equipItem(item);
+    }
 
 
     public String getName() {

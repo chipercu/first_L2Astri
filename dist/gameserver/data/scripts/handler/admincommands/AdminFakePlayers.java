@@ -83,7 +83,7 @@ public class AdminFakePlayers extends Functions implements IAdminCommandHandler,
         NpcHtmlMessage msg;
         switch (command) {
             case admin_fake:
-                getBotPanel(activeChar.getObjectId());
+                getBotPanel(new String[]{String.valueOf(activeChar.getObjectId())});
                 break;
             case admin_init_fake:
                 newFake(wordList);
@@ -133,8 +133,8 @@ public class AdminFakePlayers extends Functions implements IAdminCommandHandler,
         return true;
     }
 
-    public void getBotPanel(int playerId) {
-        Player activeChar = GameObjectsStorage.getPlayer(playerId);
+    public void getBotPanel(String[] params) {
+        Player activeChar = GameObjectsStorage.getPlayer(Integer.parseInt(params[0]));
         if (activeChar == null){
             activeChar = getSelf();
         }
@@ -146,15 +146,15 @@ public class AdminFakePlayers extends Functions implements IAdminCommandHandler,
         row1.row(0).col(1).setParams(width(100)).insert(new Button("Unspawn all", action(bypass + "unspawnAll"), 80, 32).build());
         row1.row(0).col(2).setParams(width(80)).insert(new Button("Создать", action(bypass + "createFake"), 70, 32).build());
 
-        final Table row2 = new Table(2, 4).setParams(width(280), height(60));
-        row2.row(0).col(0).setParams(width(70)).insert("Мин.Уровень");
-        row2.row(0).col(1).setParams(width(70)).insert("Макс.Уровень");
-        row2.row(0).col(2).setParams(width(70)).insert("Количество");
-        row2.row(0).col(3).setParams(width(60)).insert("");
-        row2.row(1).col(0).setParams(width(70)).insert(new Edit("minlvl").setParams(width(70)).build());
+        final Table row2 = new Table(2, 4).setParams(border(1), width(280), height(60));
+        row2.row(0).col(0).setParams(width(70)).insert("Мин.Ур.");
+        row2.row(0).col(1).setParams(width(70)).insert("Макс.Ур.");
+        row2.row(0).col(2).setParams(width(70)).insert("Кол.");
+        row2.row(0).col(3).setParams(width(50)).insert("");
+        row2.row(1).col(0).setParams(width(70), height(32)).insert(new Edit("minlvl").setParams(width(70)).build());
         row2.row(1).col(1).setParams(width(70)).insert(new Edit("maxlvl").setParams(width(70)).build());
         row2.row(1).col(2).setParams(width(70)).insert(new Edit("count").setParams(width(70)).build());
-        row2.row(1).col(3).setParams(width(60)).insert(new Button("spawn", action(bypass + "spawn $minlvl $maxlvl $count"), 60, 32).build());
+        row2.row(1).col(3).setParams(width(50)).insert(new Button("spawn", action(bypass + "spawn $minlvl $maxlvl $count"), 50, 32).build());
         table.row(0).col(0).insert(row1.build());
         table.row(0).col(0).insert(row2.build());
         msg.setHtml(HTML + table.build());
@@ -162,12 +162,15 @@ public class AdminFakePlayers extends Functions implements IAdminCommandHandler,
     }
 
     public void info(){
+        getBotPanel(new String[]{String.valueOf(getSelf().getObjectId())});
         System.out.println("show Info");
     }
     public void unspawnAll(){
+        getBotPanel(new String[]{String.valueOf(getSelf().getObjectId())});
         System.out.println("unspawn all");
     }
     public void spawn(String [] params){
+        getBotPanel(new String[]{String.valueOf(getSelf().getObjectId())});
         System.out.println(Arrays.toString(params));
     }
 
@@ -177,49 +180,52 @@ public class AdminFakePlayers extends Functions implements IAdminCommandHandler,
         NpcHtmlMessage msg = new NpcHtmlMessage(player, null);
         String HTML = "<title>Создание ботов</title>";
 
-        Table table = new Table(4, 1).setParams(border(0), background("l2ui_ct1.Windows_DF_TooltipBG"), cellpadding(4), cellspacing(4));
+        Table table = new Table(5, 1).setParams(border(0), background("l2ui_ct1.Windows_DF_TooltipBG"), cellpadding(4), cellspacing(4));
 
         final Table row1 = new Table(2, 3).setParams(width(280), height(60));
-        row1.row(0).col(0).setParams(width(100)).insert("Имя");
-        row1.row(0).col(1).setParams(width(100)).insert("Титул");
-        row1.row(0).col(2).setParams(width(80)).insert("Уровень");
-        row1.row(1).col(0).setParams(width(100)).insert(new Edit("name").setParams(width(100)).build());
-        row1.row(1).col(1).setParams(width(100)).insert(new Edit("title").setParams(width(100)).build());
-        row1.row(1).col(2).setParams(width(80)).insert(new Edit("level").setParams(width(80)).build());
+        row1.row(0).col(0).setParams(width(80)).insert("Имя");
+        row1.row(0).col(1).setParams(width(80)).insert("Титул");
+        row1.row(0).col(2).setParams(width(70)).insert("Уровень");
+        row1.row(1).col(0).setParams(width(80)).insert(new Edit("name").setParams(width(80)).build());
+        row1.row(1).col(1).setParams(width(80)).insert(new Edit("title").setParams(width(80)).build());
+        row1.row(1).col(2).setParams(width(70)).insert(new Edit("level").setParams(width(70)).build());
 
         final Table row2 = new Table(2, 2).setParams(width(280), height(60));
         row2.row(0).col(0).setParams(width(100)).insert("Профессия");
-        row2.row(0).col(1).setParams(width(100)).insert("Пол");
+        row2.row(0).col(1).setParams(width(80)).insert("Пол");
         final List<String> classList = Arrays.stream(ClassId.values())
                 .filter(classId -> classId.level() > 1)
                 .map(Enum::name).filter(name -> !name.contains("dummy")).collect(Collectors.toList());
         row2.row(1).col(0).setParams(width(100)).insert(new Combobox("class", classList).setParams(width(100)).build());
-        row2.row(1).col(1).setParams(width(100)).insert(new Combobox("sex", new ArrayList<String>(){{add("мужской"); add("женский");}}).setParams(width(100)).build());
+        row2.row(1).col(1).setParams(width(80)).insert(new Combobox("sex", new ArrayList<String>(){{add("мужской"); add("женский");}}).setParams(width(80)).build());
 
-        final Table row3 = new Table(1, 2).setParams(width(280), height(60));
-        row3.row(0).col(1).insert(new Button("Создать", action(bypass + "newFake $name $title $level $class $sex"), 70, 32).build());
+        final Table row3 = new Table(2, 2).setParams(width(280), height(60));
+        row3.row(0).col(0).setParams(width(100)).insert("Сэт");
+        row3.row(0).col(1).setParams(width(80)).insert("Оружие");
+        final List<String> armors = new ArrayList<String>(){{add("C");add("B");add("A");add("S");add("S80");add("S84");}};
 
-        table.row(1).col(0).insert(new Button("Панель", action(bypass + "getBotPanel"), 60, 32).build());
+        row3.row(1).col(0).setParams(width(100)).insert(new Combobox("armor", armors).setParams(width(100)).build());
+        row3.row(1).col(1).setParams(width(80)).insert(new Combobox("weapon", armors).setParams(width(80)).build());
+
+        final Table row4 = new Table(1, 2).setParams(width(280), height(60));
+        row4.row(0).col(1).insert(new Button("Создать", action(bypass + "newFake $name $title $level $class $sex $armor $weapon"), 70, 32).build());
+        table.row(1).col(0).insert(new Button("Панель", action(bypass + "getBotPanel " + player.getObjectId()), 60, 32).build());
         table.row(1).col(0).insert(row1.build());
         table.row(2).col(0).insert(row2.build());
         table.row(3).col(0).insert(row3.build());
+        table.row(4).col(0).insert(row4.build());
         msg.setHtml(HTML + table.build());
         player.sendPacket(msg);
     }
 
     public void newFake(String [] params){
-        final Fake_constructor fake = new Fake_constructor(params[0], params[1], Integer.parseInt(params[2]), ClassId.valueOf(params[3]), params[4]);
+        final Fake_constructor fake = new Fake_constructor(params[0], params[1], Integer.parseInt(params[2]), ClassId.valueOf(params[3]), params[4], params[5], params[6]);
         fake.initNewChar(getSelf());
-
-
         System.out.println(fake);
     }
 
 
     public void spawnFake(){
-
-
-
 
         int count = 0;
         for (Integer playerId: getOfflinePlayers()){
@@ -245,55 +251,6 @@ public class AdminFakePlayers extends Functions implements IAdminCommandHandler,
         }
         _log.info("Restored " + count + " fake players");
 
-
-
-
-//        Connection con = null;
-//        PreparedStatement statement = null;
-//        ResultSet rset = null;
-//        try {
-//            con = DatabaseFactory.getInstance().getConnection();
-//
-//            statement = con.prepareStatement("SELECT obj_id, value FROM character_variables WHERE name = 'bot'");
-//            rset = statement.executeQuery();
-//
-//            int objectId;
-//            boolean isFake;
-////            int expireTimeSecs;
-//            Player p;
-//
-//            while (rset.next()) {
-//
-//
-//                objectId = rset.getInt("obj_id");
-//                isFake = rset.getBoolean("value");
-//                if (isFake){
-//                    p = Player.restore(objectId);
-//
-//
-//
-//
-//
-//                    p.setIsPhantom(true);
-//                    if (p == null){
-//                        continue;
-//                    }
-//                    p.setNameColor(Config.SERVICES_OFFLINE_TRADE_NAME_COLOR);
-//                    p.setOfflineMode(false);
-//                    p.setIsOnline(true);
-//                    p.updateOnlineStatus();
-//                    p.spawnMe();
-//                    if (p.getClan() != null && p.getClan().getAnyMember(p.getObjectId()) != null){
-//                        p.getClan().getAnyMember(p.getObjectId()).setPlayerInstance(p, false);
-//                    }
-//                    count++;
-//                }
-//            }
-//        } catch (Exception e) {
-//            _log.error("Error while restoring fake players!", e);
-//        } finally {
-//            DbUtils.closeQuietly(con, statement, rset);
-//        }
 
     }
 
