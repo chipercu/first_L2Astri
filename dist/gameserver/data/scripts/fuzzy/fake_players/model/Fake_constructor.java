@@ -1,5 +1,6 @@
 package fuzzy.fake_players.model;
 
+import ai.fake.FakeTownAi;
 import fuzzy.fake_players.FakeItems;
 import l2ft.commons.util.Rnd;
 import l2ft.gameserver.Config;
@@ -32,7 +33,7 @@ public class Fake_constructor {
 
 
     private String name;
-    private String title;
+    private String title = "";
     private int level;
     private ClassId classId;
     private String sex;
@@ -51,19 +52,17 @@ public class Fake_constructor {
     }
 
     public void initNewChar(Player spawner) {
-        int _sex = 0;
+        int _sex = 1;
         if (sex.equals("мужской")){
-            _sex = 1;
+            _sex = 0;
         }
 
         Player newChar = Player.create(classId.getId(), _sex, "fake", name, Rnd.get(3), Rnd.get(3), Rnd.get(3));
-        if (newChar == null)
+        if (newChar == null){
             return;
-
+        }
         PlayerTemplate template = newChar.getTemplate();
-
         Player.restoreCharSubClasses(newChar);
-
         if (Config.STARTING_ADENA > 0)
             newChar.addAdena(Config.STARTING_ADENA);
 
@@ -148,8 +147,11 @@ public class Fake_constructor {
         newChar.setOfflineMode(false);
         newChar.setIsOnline(true);
         newChar.setIsPhantom(true);
+        newChar.setTitle(title);
         newChar.updateOnlineStatus();
         newChar.setLoc(Location.findAroundPosition(spawner.getLoc(), 300, spawner.getGeoIndex()));
+        newChar.setHeading(Rnd.get(10, 60000));
+        newChar.setAI(new FakeTownAi(newChar));
         newChar.spawnMe();
         addEquip(newChar);
         addAndEquipWeapon(newChar, weapon);
@@ -231,6 +233,11 @@ public class Fake_constructor {
                 case scavenger:
                 case bountyHunter:
                 case fortuneSeeker:
+                case fighter:
+                case darkFighter:
+                case warrior:
+                case dwarvenFighter:
+                case elvenFighter:
                     weapons = weapons_sets.get(FakeWeaponType.DAGGER);
                     break;
                 case maleSoldier:
@@ -253,10 +260,25 @@ public class Fake_constructor {
                 case arbalester:
                     weapons = weapons_sets.get(FakeWeaponType.CROSSBOW);
                     break;
+                case knight:
+                case shillienTemplar:
+                case elvenKnight:
+                case palusKnight:
+                case darkAvenger:
+                case templeKnight:
+                case paladin:
+                case phoenixKnight:
+                case hellKnight:
+                case shillienKnight:
+                case evaTemplar:
+
+                    weapons = weapons_sets.get(FakeWeaponType.SWORD);
+                    break;
+
             }
         }
 
-        switch (weapon){
+        switch (weaponGrade){
             case "C":{
                 addAndEquipItem(player, weapons[0]);
                 if (player.getClassId().getType2() == ClassType2.Knight){

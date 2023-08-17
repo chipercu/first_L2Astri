@@ -1,5 +1,6 @@
 package handler.admincommands;
 
+import fuzzy.Database_Util.DB_Util.DB_Player;
 import fuzzy.Html_Constructor.tags.Button;
 import fuzzy.Html_Constructor.tags.Combobox;
 import fuzzy.Html_Constructor.tags.Edit;
@@ -7,6 +8,7 @@ import fuzzy.Html_Constructor.tags.Table;
 import fuzzy.Html_Constructor.tags.parameters.Parameters;
 import fuzzy.fake_players.model.Fake_constructor;
 import l2ft.commons.dbutils.DbUtils;
+import l2ft.gameserver.dao.CharacterDAO;
 import l2ft.gameserver.database.DatabaseFactory;
 import l2ft.gameserver.database.mysql;
 import l2ft.gameserver.handler.admincommands.AdminCommandHandler;
@@ -143,10 +145,11 @@ public class AdminFakePlayers extends Functions implements IAdminCommandHandler,
         Table table = new Table(4, 1).setParams(border(0), background("l2ui_ct1.Windows_DF_TooltipBG"), cellpadding(0), cellspacing(0));
         final Table row1 = new Table(1, 3).setParams(width(280), height(60));
         row1.row(0).col(0).insert(new Button("Info", action(bypass + "info"), 80, 32).build());
-        row1.row(0).col(1).setParams(width(100)).insert(new Button("Unspawn all", action(bypass + "unspawnAll"), 80, 32).build());
+       // row1.row(0).col(1).setParams(width(100)).insert(new Button("Unspawn all", action(bypass + "unspawnAll"), 80, 32).build());
+        row1.row(0).col(1).setParams(width(100)).insert("");
         row1.row(0).col(2).setParams(width(80)).insert(new Button("Создать", action(bypass + "createFake"), 70, 32).build());
 
-        final Table row2 = new Table(2, 4).setParams(border(1), width(280), height(60));
+        final Table row2 = new Table(2, 4).setParams(border(0), width(280), height(60));
         row2.row(0).col(0).setParams(width(70)).insert("Мин.Ур.");
         row2.row(0).col(1).setParams(width(70)).insert("Макс.Ур.");
         row2.row(0).col(2).setParams(width(70)).insert("Кол.");
@@ -155,8 +158,18 @@ public class AdminFakePlayers extends Functions implements IAdminCommandHandler,
         row2.row(1).col(1).setParams(width(70)).insert(new Edit("maxlvl").setParams(width(70)).build());
         row2.row(1).col(2).setParams(width(70)).insert(new Edit("count").setParams(width(70)).build());
         row2.row(1).col(3).setParams(width(50)).insert(new Button("spawn", action(bypass + "spawn $minlvl $maxlvl $count"), 50, 32).build());
+
+        Table row3 = new Table(1, 4);
+        row3.row(0).col(0).insert(new Button("Unspawn", action(bypass + "unspawn"), 70, 40).build());
+        row3.row(0).col(1).insert(new Button("Unspawn All", action(bypass + "unspawnAll"), 70, 40).build());
+        row3.row(0).col(2).insert(new Button("Delete", action(bypass + "delete"), 70, 40).build());
+        row3.row(0).col(3).insert(new Button("Delete All", action(bypass + "deleteAll"), 70, 40).build());
+
+
         table.row(0).col(0).insert(row1.build());
-        table.row(0).col(0).insert(row2.build());
+        table.row(1).col(0).insert(row2.build());
+        table.row(1).col(0).setParams(height(20)).insert("");
+        table.row(3).col(0).insert(row3.build());
         msg.setHtml(HTML + table.build());
         activeChar.sendPacket(msg);
     }
@@ -166,9 +179,62 @@ public class AdminFakePlayers extends Functions implements IAdminCommandHandler,
         System.out.println("show Info");
     }
     public void unspawnAll(){
-        getBotPanel(new String[]{String.valueOf(getSelf().getObjectId())});
-        System.out.println("unspawn all");
+        for (Integer playerId: DB_Player.loadPlayersIdByAccountName("fake")){
+            final Player fakePlayer = GameObjectsStorage.getPlayer(playerId);
+            if (fakePlayer != null){
+                fakePlayer.deleteMe();
+            }
+            sendInfoMessage(getSelf(), "Все Боты были отозваны");
+            getBotPanel(new String[]{String.valueOf(getSelf().getObjectId())});
+        }
     }
+    public void unspawn(){
+        Player player = getSelf();
+        final GameObject target = player.getTarget();
+        if (target != null){
+            if (target.isPlayer() && target.getPlayer().isPhantom()){
+                target.deleteMe();
+                sendInfoMessage(player, "Бот был отозван");
+                getBotPanel(new String[]{String.valueOf(getSelf().getObjectId())});
+            }else {
+                sendInfoMessage(player, "Цель не является ботом");
+                getBotPanel(new String[]{String.valueOf(getSelf().getObjectId())});
+            }
+        }else {
+            sendInfoMessage(player, "Что бы отозвать бота возьмите его в таргет");
+            getBotPanel(new String[]{String.valueOf(getSelf().getObjectId())});
+        }
+    }
+    public void delete(){
+        Player player = getSelf();
+        final GameObject target = player.getTarget();
+        if (target != null){
+            if (target.isPlayer() && target.getPlayer().isPhantom()){
+                target.deleteMe();
+                CharacterDAO.getInstance().deleteCharByObjId(target.getObjectId());
+                sendInfoMessage(player, "Бот был успешно удален из бд");
+                getBotPanel(new String[]{String.valueOf(getSelf().getObjectId())});
+            }else {
+                sendInfoMessage(player, "Цель не является ботом");
+                getBotPanel(new String[]{String.valueOf(getSelf().getObjectId())});
+            }
+        }else {
+            sendInfoMessage(player, "Что бы удалить бота, возьмите его в таргет");
+            getBotPanel(new String[]{String.valueOf(getSelf().getObjectId())});
+        }
+    }
+    public void deleteAll(){
+        for (Integer playerId: DB_Player.loadPlayersIdByAccountName("fake")){
+            final Player fakePlayer = GameObjectsStorage.getPlayer(playerId);
+            if (fakePlayer != null){
+                fakePlayer.deleteMe();
+            }
+            CharacterDAO.getInstance().deleteCharByObjId(playerId);
+            sendInfoMessage(getSelf(), "Все Боты были удалены из бд");
+            getBotPanel(new String[]{String.valueOf(getSelf().getObjectId())});
+        }
+    }
+
     public void spawn(String [] params){
         getBotPanel(new String[]{String.valueOf(getSelf().getObjectId())});
         System.out.println(Arrays.toString(params));
@@ -209,6 +275,7 @@ public class AdminFakePlayers extends Functions implements IAdminCommandHandler,
 
         final Table row4 = new Table(1, 2).setParams(width(280), height(60));
         row4.row(0).col(1).insert(new Button("Создать", action(bypass + "newFake $name $title $level $class $sex $armor $weapon"), 70, 32).build());
+
         table.row(1).col(0).insert(new Button("Панель", action(bypass + "getBotPanel " + player.getObjectId()), 60, 32).build());
         table.row(1).col(0).insert(row1.build());
         table.row(2).col(0).insert(row2.build());

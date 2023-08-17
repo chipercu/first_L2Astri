@@ -1449,6 +1449,7 @@ public class Config {
 
     public static boolean ALLOW_INSTANCES_LEVEL_MANUAL;
     public static boolean ALLOW_INSTANCES_PARTY_MANUAL;
+    public static int[] INSTANCE;
     public static int INSTANCES_LEVEL_MIN;
     public static int INSTANCES_LEVEL_MAX;
     public static int INSTANCES_PARTY_MIN;
@@ -2199,6 +2200,7 @@ public class Config {
 
         ALLOW_INSTANCES_LEVEL_MANUAL = instancesSettings.getProperty("AllowInstancesLevelManual", false);
         ALLOW_INSTANCES_PARTY_MANUAL = instancesSettings.getProperty("AllowInstancesPartyManual", false);
+        START_ITEMS_MAGE = instancesSettings.getProperty("Instance", new int[]{0});
         INSTANCES_LEVEL_MIN = instancesSettings.getProperty("InstancesLevelMin", 1);
         INSTANCES_LEVEL_MAX = instancesSettings.getProperty("InstancesLevelMax", 85);
         INSTANCES_PARTY_MIN = instancesSettings.getProperty("InstancesPartyMin", 2);

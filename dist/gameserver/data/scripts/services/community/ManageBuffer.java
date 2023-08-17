@@ -176,8 +176,8 @@ public class ManageBuffer  extends Functions implements ScriptFile, ICommunityBo
 				ShowHtml(page, player);
 				return;
 			}
-			
-			if(!Config.COMMUNITYBOARD_BUFF_ALLOW.contains(id))
+			Skill skill = SkillTable.getInstance().getInfo(id, lvl);
+			if(!Config.COMMUNITYBOARD_BUFF_ALLOW.contains(skill.getId()))
 			{
 				if (player.isLangRus())
 					player.sendMessage("Недопустимый эффект!");
@@ -186,8 +186,6 @@ public class ManageBuffer  extends Functions implements ScriptFile, ICommunityBo
 				ShowHtml(page, player);
 				return;
 			}
-			
-			Skill skill = SkillTable.getInstance().getInfo(id, lvl);
 			setTime(skill);
 			if(!player.getVarB("isPlayerBuff") && pet != null)
 			{
@@ -400,8 +398,10 @@ public class ManageBuffer  extends Functions implements ScriptFile, ICommunityBo
 			}
 			
 			SBufferScheme scheme = ManageBbsBuffer.getScheme(Integer.parseInt(mBypass[1]), player.getObjectId());
-			GroupBuff(player, scheme.skills_id);
-			player.reduceAdena(pice, true);
+			if (scheme != null){
+				GroupBuff(player, scheme.skills_id);
+				player.reduceAdena(pice, true);
+			}
 			ShowHtml(mBypass[3], player);
 		}
 	}
@@ -495,10 +495,14 @@ public class ManageBuffer  extends Functions implements ScriptFile, ICommunityBo
 		{
 			int lvl = SkillTable.getInstance().getBaseLevel(i);
 			
-			if(!Config.COMMUNITYBOARD_BUFF_ALLOW.contains(i))
+			if(!Config.COMMUNITYBOARD_BUFF_ALLOW.contains(i)){
 				continue;
-			
+			}
 			skill = SkillTable.getInstance().getInfo(i, lvl);
+			if (!Config.COMMUNITYBOARD_BUFF_ALLOW.contains(skill.getId())){
+				continue;
+			}
+
 			if(!player.getVarB("isPlayerBuff") && pet != null)
 			{
 				if(i == 1413 && pet.getEffectList().getEffectsBySkillId(1363) != null)

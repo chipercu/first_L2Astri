@@ -1,5 +1,6 @@
 package fuzzy.fake_players;
 
+import ai.fake.FakeTownAi;
 import fuzzy.Database_Util.DB_Util.DB_Player;
 import fuzzy.Html_Constructor.tags.Button;
 import fuzzy.Html_Constructor.tags.Combobox;
@@ -64,6 +65,7 @@ public class FakeManager extends Functions implements ScriptFile, Parameters {
             player.setOfflineMode(false);
             player.setIsOnline(true);
             player.updateOnlineStatus();
+            player.setAI(new FakeTownAi(player));
             player.spawnMe();
             if (player.getClan() != null && player.getClan().getAnyMember(player.getObjectId()) != null){
                 player.getClan().getAnyMember(player.getObjectId()).setPlayerInstance(player, false);
